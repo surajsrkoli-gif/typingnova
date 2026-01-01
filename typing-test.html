@@ -74,18 +74,18 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         .section {
-            padding: 60px 0;
+            padding: 40px 0;
         }
 
         .btn {
             display: inline-block;
-            padding: 14px 32px;
+            padding: 12px 24px;
             border-radius: var(--radius);
             font-weight: 600;
             font-size: 1rem;
@@ -134,11 +134,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 15px 0;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -151,7 +151,7 @@
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
         }
 
@@ -184,7 +184,7 @@
 
         .nav-cta {
             background-color: var(--primary);
-            padding: 10px 24px;
+            padding: 8px 20px;
             border-radius: var(--radius);
             transition: var(--transition);
         }
@@ -197,21 +197,22 @@
 
         /* Test Container */
         .test-container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 40px;
+            max-width: 900px;
+            margin: 30px auto;
             background-color: var(--dark-card);
             border-radius: var(--radius);
             border: 1px solid var(--dark-border);
+            overflow: hidden;
         }
 
         .test-header {
             text-align: center;
-            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(14, 165, 233, 0.1));
         }
 
         .test-header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 10px;
             background: linear-gradient(to right, var(--text-primary), var(--primary-light));
             -webkit-background-clip: text;
@@ -221,7 +222,7 @@
 
         .test-header p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         /* Test Controls */
@@ -229,10 +230,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 30px;
-            padding: 20px;
+            padding: 20px 30px;
             background-color: rgba(30, 41, 59, 0.7);
-            border-radius: var(--radius);
+            border-bottom: 1px solid var(--dark-border);
             flex-wrap: wrap;
             gap: 15px;
         }
@@ -244,7 +244,7 @@
         }
 
         .time-btn {
-            padding: 10px 20px;
+            padding: 8px 16px;
             background-color: transparent;
             border: 2px solid var(--dark-border);
             color: var(--text-secondary);
@@ -276,13 +276,13 @@
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary-light);
         }
 
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -290,82 +290,68 @@
 
         .test-actions {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
-        /* Text Display */
-        .text-display-container {
-            margin-bottom: 40px;
+        /* Main Test Area - Single Box Design */
+        .test-area {
+            padding: 30px;
             position: relative;
         }
 
+        .typing-container {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            border: 2px solid var(--dark-border);
+            border-radius: var(--radius);
+            background-color: rgba(15, 23, 42, 0.9);
+        }
+
+        /* Text Display with Character-by-Character Highlighting */
         .text-display {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             line-height: 1.8;
-            padding: 30px;
-            background-color: rgba(15, 23, 42, 0.8);
-            border-radius: var(--radius);
-            border: 2px solid var(--dark-border);
-            min-height: 200px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .text-display::before {
-            content: '';
+            padding: 25px;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 10px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent);
+            color: var(--text-secondary);
+            transition: transform 0.3s ease;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
-        .text-display::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 10px;
-            background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        .text-display span {
+            transition: all 0.1s ease;
+            border-radius: 2px;
         }
 
-        .word {
-            margin-right: 12px;
-            position: relative;
-            display: inline-block;
-            transition: color 0.2s ease;
-        }
-
-        .word.current {
-            background-color: rgba(124, 58, 237, 0.2);
-            border-radius: 4px;
-        }
-
-        .word.correct {
+        .text-display span.correct {
             color: var(--success);
         }
 
-        .word.incorrect {
+        .text-display span.incorrect {
             color: var(--error);
+            background-color: rgba(239, 68, 68, 0.1);
         }
 
-        .word.extra {
-            color: var(--warning);
-            text-decoration: line-through;
+        .text-display span.current {
+            background-color: rgba(124, 58, 237, 0.2);
+            position: relative;
         }
 
-        .cursor {
-            display: inline-block;
-            width: 2px;
-            height: 1.4em;
-            background-color: var(--primary);
+        .text-display span.current::after {
+            content: '';
             position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: var(--primary);
             animation: blink 1s infinite;
-            vertical-align: middle;
-            margin-left: -12px;
         }
 
         @keyframes blink {
@@ -373,45 +359,23 @@
             50% { opacity: 0; }
         }
 
-        /* Input Area */
-        .input-container {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
-        .test-input {
-            width: 100%;
-            padding: 20px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1.4rem;
-            background-color: rgba(15, 23, 42, 0.8);
-            border: 2px solid var(--dark-border);
-            border-radius: var(--radius);
-            color: var(--text-primary);
-            resize: none;
-            min-height: 120px;
-            transition: var(--transition);
-        }
-
-        .test-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
-        }
-
-        .input-placeholder {
+        /* Input Area - Hidden but functional */
+        .hidden-input {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            color: var(--text-secondary);
-            font-size: 1.4rem;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
             pointer-events: none;
-            font-family: 'JetBrains Mono', monospace;
         }
 
-        .test-input:focus + .input-placeholder,
-        .test-input:not(:placeholder-shown) + .input-placeholder {
-            display: none;
+        /* Instructions */
+        .instructions {
+            text-align: center;
+            padding: 15px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--dark-border);
+            background-color: rgba(30, 41, 59, 0.5);
         }
 
         /* Results Panel */
@@ -419,13 +383,9 @@
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
             border-radius: var(--radius);
             padding: 40px;
-            margin-top: 40px;
+            margin-top: 30px;
             display: none;
             border: 1px solid var(--dark-border);
-        }
-
-        .results-panel.active {
-            display: block;
             animation: slideUp 0.5s ease;
         }
 
@@ -438,6 +398,10 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .results-panel.active {
+            display: block;
         }
 
         .results-header {
@@ -453,14 +417,14 @@
 
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
             margin-bottom: 40px;
         }
 
         .result-card {
             background-color: var(--dark-bg);
-            padding: 25px;
+            padding: 20px;
             border-radius: var(--radius);
             text-align: center;
             border: 1px solid var(--dark-border);
@@ -474,7 +438,7 @@
         }
 
         .result-value {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 800;
             font-family: 'JetBrains Mono', monospace;
             margin-bottom: 10px;
@@ -494,7 +458,7 @@
 
         .result-label {
             color: var(--text-secondary);
-            font-size: 1rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -502,37 +466,38 @@
         .result-actions {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
         }
 
         /* Footer */
         footer {
             background-color: var(--dark-card);
-            padding: 60px 0 30px;
+            padding: 40px 0 20px;
             border-top: 1px solid var(--dark-border);
-            margin-top: 60px;
+            margin-top: 40px;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            gap: 30px;
+            margin-bottom: 30px;
         }
 
         .footer-about h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
         }
 
         .footer-about p {
             color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
         .footer-links h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
         }
 
         .footer-links ul {
@@ -540,12 +505,13 @@
         }
 
         .footer-links li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .footer-links a {
             color: var(--text-secondary);
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .footer-links a:hover,
@@ -556,33 +522,34 @@
 
         .social-icons {
             display: flex;
-            gap: 20px;
-            margin-top: 20px;
+            gap: 15px;
+            margin-top: 15px;
         }
 
         .social-icon {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background-color: var(--dark-border);
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
+            font-size: 0.9rem;
         }
 
         .social-icon:hover,
         .social-icon:focus {
             background-color: var(--primary);
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 20px;
             border-top: 1px solid var(--dark-border);
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         /* Responsive Styles */
@@ -592,17 +559,17 @@
             }
             
             .test-container {
-                padding: 20px;
-                margin: 20px auto;
+                margin: 15px auto;
             }
             
             .test-header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             .test-controls {
                 flex-direction: column;
                 align-items: stretch;
+                padding: 15px;
             }
             
             .time-selector {
@@ -617,13 +584,17 @@
                 justify-content: center;
             }
             
-            .text-display {
-                font-size: 1.2rem;
-                padding: 20px;
+            .test-area {
+                padding: 15px;
             }
             
-            .test-input {
-                font-size: 1.2rem;
+            .typing-container {
+                height: 250px;
+            }
+            
+            .text-display {
+                font-size: 1.1rem;
+                padding: 20px;
             }
             
             .results-grid {
@@ -642,7 +613,7 @@
             }
             
             .time-btn {
-                padding: 8px 15px;
+                padding: 6px 12px;
                 font-size: 0.9rem;
             }
             
@@ -656,10 +627,11 @@
             
             .text-display {
                 font-size: 1rem;
+                padding: 15px;
             }
             
-            .test-input {
-                font-size: 1rem;
+            .typing-container {
+                height: 200px;
             }
         }
     </style>
@@ -673,7 +645,7 @@
                 
                 <ul class="nav-links" role="menu">
                     <li role="none"><a href="index.html" class="nav-link" role="menuitem">Home</a></li>
-                    <li role="none"><a href="test.html" class="nav-link" role="menuitem">Typing Test</a></li>
+                    <li role="none"><a href="test.html" class="nav-link active" role="menuitem">Typing Test</a></li>
                     <li role="none"><a href="#" class="nav-link" role="menuitem">Practice</a></li>
                     <li role="none"><a href="#" class="nav-link" role="menuitem">Games</a></li>
                     <li role="none"><a href="#" class="nav-link" role="menuitem">Leaderboard</a></li>
@@ -684,12 +656,12 @@
     </header>
 
     <!-- Main Test Section -->
-    <main>
+    <main class="section">
         <div class="container">
             <div class="test-container">
                 <div class="test-header">
                     <h1>Typing Speed Test</h1>
-                    <p>Test your typing speed and accuracy. Select a time limit and start typing!</p>
+                    <p>Type the text below. Focus on accuracy and speed!</p>
                 </div>
 
                 <!-- Test Controls -->
@@ -713,6 +685,10 @@
                             <div class="stat-value" id="accuracy">100%</div>
                             <div class="stat-label">Accuracy</div>
                         </div>
+                        <div class="stat-box">
+                            <div class="stat-value" id="errors">0</div>
+                            <div class="stat-label">Errors</div>
+                        </div>
                     </div>
                     
                     <div class="test-actions">
@@ -721,67 +697,27 @@
                     </div>
                 </div>
 
-                <!-- Text Display -->
-                <div class="text-display-container">
-                    <div class="text-display" id="text-display">
-                        <!-- Words will be inserted here by JavaScript -->
-                        <span class="word">The</span>
-                        <span class="word">quick</span>
-                        <span class="word">brown</span>
-                        <span class="word">fox</span>
-                        <span class="word">jumps</span>
-                        <span class="word">over</span>
-                        <span class="word">the</span>
-                        <span class="word">lazy</span>
-                        <span class="word">dog</span>
-                        <span class="word">while</span>
-                        <span class="word">the</span>
-                        <span class="word">sun</span>
-                        <span class="word">shines</span>
-                        <span class="word">brightly</span>
-                        <span class="word">in</span>
-                        <span class="word">the</span>
-                        <span class="word">clear</span>
-                        <span class="word">blue</span>
-                        <span class="word">sky</span>
-                        <span class="word">above</span>
-                        <span class="word">the</span>
-                        <span class="word">peaceful</span>
-                        <span class="word">countryside</span>
-                        <span class="word">where</span>
-                        <span class="word">birds</span>
-                        <span class="word">sing</span>
-                        <span class="word">and</span>
-                        <span class="word">flowers</span>
-                        <span class="word">bloom</span>
-                        <span class="word">throughout</span>
-                        <span class="word">the</span>
-                        <span class="word">season</span>
-                        <span class="word">bringing</span>
-                        <span class="word">joy</span>
-                        <span class="word">to</span>
-                        <span class="word">all</span>
-                        <span class="word">who</span>
-                        <span class="word">witness</span>
-                        <span class="word">nature's</span>
-                        <span class="word">beauty</span>
-                        <span class="word">unfold</span>
-                        <span class="word">before</span>
-                        <span class="word">their</span>
-                        <span class="word">eyes</span>
+                <!-- Single Box Typing Area -->
+                <div class="test-area">
+                    <div class="typing-container" id="typing-container">
+                        <!-- Text will be displayed here character by character -->
+                        <div class="text-display" id="text-display"></div>
+                        
+                        <!-- Hidden input for typing -->
+                        <input 
+                            type="text" 
+                            class="hidden-input" 
+                            id="typing-input"
+                            autocomplete="off"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                        >
                     </div>
-                </div>
-
-                <!-- Input Area -->
-                <div class="input-container">
-                    <textarea 
-                        class="test-input" 
-                        id="typing-input" 
-                        placeholder=" "
-                        rows="4"
-                        disabled
-                    ></textarea>
-                    <div class="input-placeholder">Start typing here when the test begins...</div>
+                    
+                    <div class="instructions">
+                        Press <strong>START TEST</strong> and begin typing. The text will automatically scroll as you type.
+                    </div>
                 </div>
 
                 <!-- Results Panel -->
@@ -866,9 +802,11 @@
             // DOM Elements
             const textDisplay = document.getElementById('text-display');
             const typingInput = document.getElementById('typing-input');
+            const typingContainer = document.getElementById('typing-container');
             const timeLeft = document.getElementById('time-left');
             const wpmDisplay = document.getElementById('wpm');
             const accuracyDisplay = document.getElementById('accuracy');
+            const errorsDisplay = document.getElementById('errors');
             const startBtn = document.getElementById('start-btn');
             const resetBtn = document.getElementById('reset-btn');
             const timeButtons = document.querySelectorAll('.time-btn');
@@ -888,19 +826,35 @@
             let timerInterval = null;
             let startTime = null;
             let endTime = null;
-            let currentWordIndex = 0;
+            let currentCharIndex = 0;
             let correctChars = 0;
-            let totalChars = 0;
-            let errors = 0;
-            let words = [];
+            let totalCharsTyped = 0;
+            let errorCount = 0;
+            let currentText = '';
+            let charElements = [];
             
-            // Sample texts for typing test
-            const sampleTexts = [
-                "The quick brown fox jumps over the lazy dog while the sun shines brightly in the clear blue sky above the peaceful countryside where birds sing and flowers bloom throughout the season bringing joy to all who witness nature's beauty unfold before their eyes",
-                "Programming is the process of creating a set of instructions that tell a computer how to perform a task. It involves writing code in various languages like JavaScript, Python, and Java to solve problems and build applications that make our lives easier and more efficient in this digital age",
-                "Success is not final, failure is not fatal: it is the courage to continue that counts. Every great achievement was once considered impossible until someone decided to try. The only way to do great work is to love what you do and believe in your ability to make a difference",
-                "Technology continues to evolve at an astonishing pace, transforming how we communicate, work, and live. From artificial intelligence to quantum computing, innovations are reshaping our world and creating new opportunities for those willing to learn and adapt to constant change",
-                "The beauty of nature lies in its diversity and resilience. Forests, oceans, mountains, and deserts all contain unique ecosystems that support life in extraordinary ways. Protecting our environment is essential for future generations to enjoy the wonders of our planet"
+            // 15 Passages with varying lengths for different time limits
+            const passages = [
+                // Short passages (30 seconds)
+                "The quick brown fox jumps over the lazy dog. This sentence contains all letters of the alphabet. Perfect for testing keyboard layout and typing speed.",
+                "Programming requires logical thinking and problem-solving skills. Developers write code to create applications that solve real-world problems efficiently.",
+                "Practice makes perfect when learning to type. Consistent daily practice helps improve both speed and accuracy significantly over time.",
+                "Technology advances rapidly in today's digital age. Innovations in artificial intelligence and machine learning transform industries worldwide.",
+                "Reading improves vocabulary and comprehension skills. Regular reading habits enhance cognitive abilities and expand knowledge across subjects.",
+                
+                // Medium passages (60 seconds)
+                "The sun rises in the east and sets in the west, marking the passage of time throughout the day. Nature follows predictable patterns that humans have observed for centuries, from seasonal changes to celestial movements. Understanding these natural rhythms helps us plan our lives and appreciate the world around us.",
+                "Effective communication is essential in both personal and professional relationships. Clear writing and speaking skills enable individuals to express ideas, share information, and collaborate successfully. Whether in emails, reports, or conversations, good communication builds trust and understanding between people.",
+                "Physical exercise benefits both body and mind. Regular activity improves cardiovascular health, strengthens muscles, and reduces stress levels. Combining different types of exercise creates a balanced fitness routine that promotes overall well-being and longevity.",
+                "Learning a new language opens doors to different cultures and perspectives. It enhances cognitive flexibility, improves memory, and provides practical advantages in an increasingly globalized world. Language acquisition requires consistent practice and exposure to authentic materials.",
+                "Time management skills are crucial for productivity and success. Prioritizing tasks, setting realistic goals, and minimizing distractions help individuals accomplish more in less time. Effective time management reduces stress and creates space for both work and leisure activities.",
+                
+                // Long passages (120 seconds)
+                "The history of computing spans centuries, from early mechanical calculators to modern quantum computers. Each technological breakthrough built upon previous discoveries, accelerating the pace of innovation. Today's interconnected world relies on complex networks that transmit information instantly across continents, transforming how we work, learn, and socialize. The future promises even more revolutionary changes as researchers explore artificial general intelligence and biocomputing.",
+                "Environmental conservation has become increasingly important as human activities impact natural ecosystems. Sustainable practices aim to balance resource use with preservation needs, ensuring future generations can enjoy clean air, fresh water, and biodiversity. Individual actions, combined with policy changes and technological solutions, contribute to protecting our planet's delicate ecological balance.",
+                "Economic principles influence decisions at personal, business, and governmental levels. Supply and demand dynamics, inflation rates, and employment trends shape financial landscapes worldwide. Understanding basic economic concepts helps individuals make informed choices about saving, investing, and spending in various market conditions.",
+                "Creative expression through art, music, and literature enriches human experience across cultures and historical periods. Artistic works reflect societal values, challenge conventions, and provide emotional resonance for audiences. Supporting creative industries fosters innovation while preserving cultural heritage for future appreciation.",
+                "Education systems evolve to meet changing societal needs and technological advancements. Traditional classroom settings now incorporate digital tools that facilitate personalized learning and global collaboration. Lifelong learning has become essential as knowledge expands rapidly in specialized fields and interdisciplinary areas."
             ];
             
             // Initialize
@@ -912,6 +866,11 @@
             resetBtn.addEventListener('click', resetTest);
             typingInput.addEventListener('input', handleTyping);
             typingInput.addEventListener('keydown', handleKeyDown);
+            typingContainer.addEventListener('click', function() {
+                if (testActive) {
+                    typingInput.focus();
+                }
+            });
             
             timeButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
@@ -932,13 +891,13 @@
             });
             
             practiceBtn.addEventListener('click', function() {
-                alert('Practice mode coming soon!');
+                alert('Practice mode will be available soon!');
             });
             
             shareBtn.addEventListener('click', function() {
                 const wpm = resultWPM.textContent;
                 const accuracy = resultAccuracy.textContent;
-                const text = `I just typed at ${wpm} WPM with ${accuracy} accuracy on TypeNova! Try it yourself.`;
+                const text = `I typed at ${wpm} WPM with ${accuracy} accuracy on TypeNova! Try it yourself at typenova.com`;
                 
                 if (navigator.share) {
                     navigator.share({
@@ -947,37 +906,43 @@
                         url: window.location.href
                     });
                 } else {
-                    // Fallback for browsers that don't support Web Share API
                     navigator.clipboard.writeText(text)
                         .then(() => alert('Results copied to clipboard!'))
-                        .catch(() => alert(text));
+                        .catch(() => prompt('Copy this text to share:', text));
                 }
             });
             
             // Functions
             function loadNewText() {
-                const randomIndex = Math.floor(Math.random() * sampleTexts.length);
-                const text = sampleTexts[randomIndex];
-                words = text.split(' ');
+                // Select passage based on time limit
+                let passageIndex;
+                if (timeLimit <= 30) {
+                    passageIndex = Math.floor(Math.random() * 5); // First 5 short passages
+                } else if (timeLimit <= 60) {
+                    passageIndex = 5 + Math.floor(Math.random() * 5); // Next 5 medium passages
+                } else {
+                    passageIndex = 10 + Math.floor(Math.random() * 5); // Last 5 long passages
+                }
                 
-                // Clear and populate text display
-                textDisplay.innerHTML = '';
-                words.forEach((word, index) => {
-                    const span = document.createElement('span');
-                    span.className = 'word';
-                    span.textContent = word + ' ';
-                    span.dataset.index = index;
-                    textDisplay.appendChild(span);
-                });
-                
-                // Reset cursor position
-                currentWordIndex = 0;
-                updateCursor();
-                
-                // Reset stats
+                currentText = passages[passageIndex];
+                currentCharIndex = 0;
                 correctChars = 0;
-                totalChars = 0;
-                errors = 0;
+                totalCharsTyped = 0;
+                errorCount = 0;
+                charElements = [];
+                
+                // Display text character by character
+                textDisplay.innerHTML = '';
+                for (let i = 0; i < currentText.length; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = currentText[i];
+                    span.dataset.index = i;
+                    charElements.push(span);
+                    textDisplay.appendChild(span);
+                }
+                
+                // Update cursor position
+                updateCursor();
                 updateStats();
             }
             
@@ -990,6 +955,7 @@
                 
                 // Enable input
                 typingInput.disabled = false;
+                typingInput.value = '';
                 typingInput.focus();
                 
                 // Update buttons
@@ -1002,6 +968,9 @@
                 
                 // Disable time selection during test
                 timeButtons.forEach(btn => btn.style.pointerEvents = 'none');
+                
+                // Scroll to ensure first character is visible
+                scrollToCurrentChar();
             }
             
             function resetTest() {
@@ -1023,9 +992,9 @@
                 startBtn.textContent = 'Start Test';
                 resetBtn.disabled = true;
                 
-                // Reset words highlighting
-                document.querySelectorAll('.word').forEach(word => {
-                    word.className = 'word';
+                // Reset text highlighting
+                charElements.forEach(charEl => {
+                    charEl.className = '';
                 });
                 
                 // Hide results
@@ -1056,8 +1025,9 @@
                 
                 // Disable input
                 typingInput.disabled = true;
+                typingInput.blur();
                 
-                // Calculate results
+                // Calculate final results
                 const timeTaken = timeLimit;
                 const wpm = calculateWPM();
                 const accuracy = calculateAccuracy();
@@ -1066,10 +1036,11 @@
                 resultWPM.textContent = wpm;
                 resultAccuracy.textContent = accuracy + '%';
                 resultTime.textContent = timeTaken + 's';
-                resultErrors.textContent = errors;
+                resultErrors.textContent = errorCount;
                 
                 // Show results panel
                 resultsPanel.classList.add('active');
+                resultsPanel.scrollIntoView({ behavior: 'smooth' });
                 
                 // Update buttons
                 startBtn.disabled = false;
@@ -1084,122 +1055,132 @@
                 if (!testActive) return;
                 
                 const input = typingInput.value;
-                const wordsArray = input.split(' ');
-                const currentWord = wordsArray[currentWordIndex] || '';
+                const lastChar = input[input.length - 1] || '';
                 
-                // Update word highlighting
-                document.querySelectorAll('.word').forEach((wordEl, index) => {
-                    const word = words[index];
-                    const userWord = wordsArray[index] || '';
+                // Reset input but keep functionality
+                if (currentCharIndex < currentText.length) {
+                    const expectedChar = currentText[currentCharIndex];
                     
-                    wordEl.className = 'word';
-                    
-                    if (index < currentWordIndex) {
-                        // Past words
-                        if (userWord === word) {
-                            wordEl.classList.add('correct');
+                    // Update character highlighting
+                    if (input.length > totalCharsTyped) {
+                        // New character typed
+                        if (lastChar === expectedChar) {
+                            charElements[currentCharIndex].className = 'correct';
+                            correctChars++;
                         } else {
-                            wordEl.classList.add('incorrect');
-                        }
-                    } else if (index === currentWordIndex) {
-                        // Current word
-                        wordEl.classList.add('current');
-                        
-                        // Check each character
-                        const wordChars = word.split('');
-                        const userChars = userWord.split('');
-                        
-                        for (let i = 0; i < Math.max(wordChars.length, userChars.length); i++) {
-                            if (i >= userChars.length) break;
-                            
-                            if (userChars[i] === wordChars[i]) {
-                                correctChars++;
-                            } else {
-                                errors++;
-                            }
-                            totalChars++;
+                            charElements[currentCharIndex].className = 'incorrect';
+                            errorCount++;
                         }
                         
-                        // Handle extra characters
-                        if (userChars.length > wordChars.length) {
-                            errors += (userChars.length - wordChars.length);
-                            wordEl.classList.add('extra');
+                        currentCharIndex++;
+                        totalCharsTyped++;
+                        
+                        // Update cursor position
+                        updateCursor();
+                        
+                        // Auto-scroll to keep current character in view
+                        scrollToCurrentChar();
+                    } else if (input.length < totalCharsTyped) {
+                        // Backspace pressed
+                        currentCharIndex--;
+                        totalCharsTyped--;
+                        
+                        // Reset character highlighting
+                        charElements[currentCharIndex].className = '';
+                        
+                        // Update cursor position
+                        updateCursor();
+                        
+                        // Adjust error count if needed
+                        if (charElements[currentCharIndex].className === 'incorrect') {
+                            errorCount = Math.max(0, errorCount - 1);
                         }
                     }
-                });
-                
-                // Move to next word if space is pressed and we have content
-                if (input.endsWith(' ') && currentWord.trim() !== '') {
-                    currentWordIndex++;
-                    updateCursor();
                     
-                    // Scroll to keep current word in view
-                    const currentWordEl = document.querySelector(`.word[data-index="${currentWordIndex}"]`);
-                    if (currentWordEl) {
-                        currentWordEl.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
-                    }
+                    updateStats();
                 }
                 
-                updateStats();
+                // Check if all characters are typed
+                if (currentCharIndex >= currentText.length) {
+                    endTest();
+                }
             }
             
             function handleKeyDown(e) {
-                // Prevent space from being entered at the beginning
-                if (e.key === ' ' && typingInput.value.trim() === '') {
+                // Prevent default behavior for certain keys
+                if (e.key === 'Backspace' && typingInput.value === '') {
                     e.preventDefault();
                 }
                 
-                // Backspace handling for word navigation
-                if (e.key === 'Backspace' && typingInput.value.endsWith(' ') && currentWordIndex > 0) {
-                    e.preventDefault();
-                    currentWordIndex--;
-                    updateCursor();
-                    
-                    // Remove the last word from input
-                    const wordsArray = typingInput.value.trim().split(' ');
-                    wordsArray.pop();
-                    typingInput.value = wordsArray.join(' ') + ' ';
+                // Start test on any key if not started
+                if (!testActive && e.key.length === 1) {
+                    startTest();
                 }
             }
             
             function updateCursor() {
-                // Remove existing cursor
-                document.querySelectorAll('.cursor').forEach(c => c.remove());
+                // Remove current class from all characters
+                charElements.forEach(charEl => {
+                    charEl.classList.remove('current');
+                });
                 
-                // Add cursor to current word
-                const currentWordEl = document.querySelector(`.word[data-index="${currentWordIndex}"]`);
-                if (currentWordEl) {
-                    const cursor = document.createElement('span');
-                    cursor.className = 'cursor';
-                    currentWordEl.appendChild(cursor);
+                // Add current class to current character
+                if (currentCharIndex < charElements.length) {
+                    charElements[currentCharIndex].classList.add('current');
+                }
+            }
+            
+            function scrollToCurrentChar() {
+                if (currentCharIndex < charElements.length) {
+                    const currentCharEl = charElements[currentCharIndex];
+                    const container = typingContainer;
+                    const containerHeight = container.clientHeight;
+                    const charTop = currentCharEl.offsetTop;
+                    const charHeight = currentCharEl.offsetHeight;
+                    
+                    // Calculate scroll position
+                    const scrollPos
+                                        const targetScroll = charTop - (containerHeight / 2) + (charHeight / 2);
+                    
+                    // Smooth scroll to keep current character centered
+                    textDisplay.style.transform = `translateY(-${targetScroll}px)`;
                 }
             }
             
             function updateStats() {
                 if (!testActive) return;
                 
-                // Calculate WPM
-                const wpm = calculateWPM();
-                wpmDisplay.textContent = wpm;
+                // Calculate WPM (Words Per Minute)
+                const timeElapsed = (timeLimit - timeRemaining) || 1;
+                const minutes = timeElapsed / 60;
+                const wordsTyped = correctChars / 5; // Standard: 5 characters = 1 word
+                const wpm = Math.round(wordsTyped / minutes);
+                wpmDisplay.textContent = wpm > 0 ? wpm : 0;
                 
                 // Calculate accuracy
-                const accuracy = calculateAccuracy();
+                const accuracy = totalCharsTyped > 0 
+                    ? Math.round((correctChars / totalCharsTyped) * 100)
+                    : 100;
                 accuracyDisplay.textContent = accuracy + '%';
+                
+                // Update errors
+                errorsDisplay.textContent = errorCount;
             }
             
             function calculateWPM() {
-                if (!startTime || totalChars === 0) return 0;
+                if (!startTime || correctChars === 0) return 0;
                 
-                const timeElapsed = (timeLimit - timeRemaining) || 1;
-                const wordsTyped = correctChars / 5; // Standard: 5 characters = 1 word
-                const wpm = Math.round((wordsTyped / timeElapsed) * 60);
+                const timeElapsed = timeLimit; // Total test time
+                const minutes = timeElapsed / 60;
+                const wordsTyped = correctChars / 5;
+                const wpm = Math.round(wordsTyped / minutes);
                 return wpm > 0 ? wpm : 0;
             }
             
             function calculateAccuracy() {
-                if (totalChars === 0) return 100;
+                if (totalCharsTyped === 0) return 100;
                 
-                const accuracy = Math.round(((totalChars - errors) / totalChars) * 100);
+                const accuracy = Math.round((correctChars / totalCharsTyped) * 100);
                 return accuracy > 0 ? accuracy : 0;
             }
             
