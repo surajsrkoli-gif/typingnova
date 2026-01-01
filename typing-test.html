@@ -1139,8 +1139,7 @@
                     const charHeight = currentCharEl.offsetHeight;
                     
                     // Calculate scroll position
-                    const scrollPos
-                                        const targetScroll = charTop - (containerHeight / 2) + (charHeight / 2);
+                    const targetScroll = charTop - (containerHeight / 2) + (charHeight / 2);
                     
                     // Smooth scroll to keep current character centered
                     textDisplay.style.transform = `translateY(-${targetScroll}px)`;
