@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>1 Minute Typing Test | Typing Nova</title>
+  <meta name="description" content="Test your typing speed in 1 minute. Practice typing with accurate WPM, error, and accuracy calculation on Typing Nova." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 0;
+      color: #111;
+    }
+
+    header {
+      background: #ffffff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 15px 30px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .passage {
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      line-height: 1.6;
+      user-select: none;
+    }
+
+    textarea {
+      width: 100%;
+      height: 140px;
+      font-size: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      resize: none;
+      outline: none;
+    }
+
+    textarea:disabled {
+      background: #f9fafb;
+    }
+
+    .result {
+      margin-top: 20px;
+      display: none;
+      background: #f3f4f6;
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    .result p {
+      margin: 6px 0;
+      font-size: 16px;
+    }
+
+    .btn {
+      margin-top: 15px;
+      padding: 10px 18px;
+      font-size: 15px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+<header>Typing Nova</header>
+
+<div class="container">
+  <div class="top-bar">
+    <div>⏱ Time: <span id="time">60</span>s</div>
+    <div>Errors: <span id="errors">0</span></div>
+  </div>
+
+  <div class="passage" id="passage">
+    The quick brown fox jumps over the lazy dog. Typing regularly helps improve speed and accuracy. Focus on typing each character carefully without looking at the keyboard.
+  </div>
+
+  <textarea id="typingArea" placeholder="Start typing here..."></textarea>
+
+  <button class="btn" onclick="resetTest()">Reset Test</button>
+
+  <div class="result" id="result">
+    <p><strong>Time:</strong> 1 Minute</p>
+    <p><strong>Gross WPM:</strong> <span id="grossWpm"></span></p>
+    <p><strong>Errors:</strong> <span id="finalErrors"></span></p>
+    <p><strong>Accuracy:</strong> <span id="accuracy"></span>%</p>
+  </div>
+</div>
+
+<script>
+  const passageText = document.getElementById("passage").innerText;
+  const typingArea = document.getElementById("typingArea");
+
+  let timeLeft = 60;
+  let timerStarted = false;
+  let timer;
+  let errors = 0;
+
+  typingArea.addEventListener("paste", e => e.preventDefault());
+  typingArea.addEventListener("copy", e => e.preventDefault());
+
+  typingArea.addEventListener("input", () => {
+    if (!timerStarted) {
+      timerStarted = true;
+      timer = setInterval(updateTimer, 1000);
+    }
+
+    calculateErrors();
+  });
+
+  function updateTimer() {
+    timeLeft--;
+    document.getElementById("time").innerText = timeLeft;
+
+    if (timeLeft <= 0) {
+      clearInterval(timer);
+      typingArea.disabled = true;
+      showResult();
+    }
+  }
+
+  function calculateErrors() {
+    const typed = typingArea.value;
+    errors = 0;
+
+    for (let i = 0; i < typed.length; i++) {
+      if (typed[i] !== passageText[i]) {
+        errors++;
+      }
+    }
+
+    document.getElementById("errors").innerText = errors;
+  }
+
+  function showResult() {
+    const typedChars = typingArea.value.length;
+    const grossWpm = Math.round((typedChars / 5) / 1);
+    const accuracy = typedChars > 0
+      ? Math.round(((typedChars - errors) / typedChars) * 100)
+      : 0;
+
+    document.getElementById("grossWpm").innerText = grossWpm < 0 ? 0 : grossWpm;
+    document.getElementById("finalErrors").innerText = errors;
+    document.getElementById("accuracy").innerText = accuracy < 0 ? 0 : accuracy;
+
+    document.getElementById("result").style.display = "block";
+  }
+
+  function resetTest() {
+    clearInterval(timer);
+    timeLeft = 60;
+    errors = 0;
+    timerStarted = false;
+
+    document.getElementById("time").innerText = 60;
+    document.getElementById("errors").innerText = 0;
+    typingArea.value = "";
+    typingArea.disabled = false;
+    document.getElementById("result").style.display = "none";
+    typingArea.focus();
+  }
+</script>
+
+</body>
+</html>
