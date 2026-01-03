@@ -3,857 +3,803 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Typing Nova - Improve Your Typing Speed and Accuracy</title>
-    <meta name="description" content="Practice typing with structured lessons, real-time feedback, and clean results. Typing Nova helps you type faster and more accurately with daily practice.">
+    <title>Typing Nova - Practice. Improve. Perform.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            /* Light Theme */
-            --primary: #3a86ff;
-            --primary-dark: #2667cc;
-            --secondary: #8338ec;
-            --accent: #ff006e;
-            --light: #f8f9fa;
-            --gray: #6c757d;
-            --dark: #212529;
-            --border: #e9ecef;
-            --card-bg: #ffffff;
-            --body-bg: #ffffff;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            --radius: 10px;
-            --transition: all 0.3s ease;
-        }
-        
-        /* Dark Theme */
-        [data-theme="dark"] {
-            --primary: #5a9cff;
-            --primary-dark: #3a86ff;
-            --secondary: #9d4edd;
-            --accent: #ff2d7a;
-            --light: #343a40;
-            --gray: #adb5bd;
-            --dark: #f8f9fa;
-            --border: #495057;
-            --card-bg: #2d3748;
-            --body-bg: #1a202c;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-        }
-        
+        /* CSS Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        /* Variables - Dark Theme */
+        :root {
+            --primary: #6c63ff;
+            --primary-dark: #554fd8;
+            --secondary: #ff6b9d;
+            --accent: #00d4aa;
+            --dark-bg: #0f172a;
+            --dark-surface: #1e293b;
+            --dark-card: #334155;
+            --text: #f1f5f9;
+            --text-light: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #475569;
+            --white: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
+            --bright-btn: linear-gradient(135deg, #ff6b9d 0%, #ff8fab 100%);
+            --bright-btn-hover: linear-gradient(135deg, #ff8fab 0%, #ff6b9d 100%);
+            --bright-blue-btn: linear-gradient(135deg, #4361ee 0%, #4cc9f0 100%);
+            --bright-blue-btn-hover: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+        }
+
+        /* Base Styles */
         body {
             font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--dark-bg);
             line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--body-bg);
             overflow-x: hidden;
-            transition: var(--transition);
+            transition: background-color 0.3s ease;
         }
-        
+
         h1, h2, h3, h4 {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
             line-height: 1.3;
-            margin-bottom: 1rem;
         }
-        
-        h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
-        
-        h2 {
-            font-size: 2.2rem;
-            text-align: center;
-            margin-bottom: 2.5rem;
+
+        ul {
+            list-style: none;
         }
-        
-        h3 {
-            font-size: 1.5rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-            color: var(--gray);
-        }
-        
+
         .container {
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 20px;
         }
-        
-        section {
-            padding: 5rem 0;
+
+        .section {
+            padding: 80px 0;
         }
-        
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
         .btn {
-            display: inline-block;
-            padding: 0.85rem 1.8rem;
-            border-radius: var(--radius);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 1rem;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border: none;
-            font-family: 'Poppins', sans-serif;
-            text-decoration: none;
+            font-family: 'Inter', sans-serif;
         }
-        
+
         .btn-primary {
-            background-color: var(--primary);
-            color: white;
+            background: var(--bright-blue-btn);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
         }
-        
+
         .btn-primary:hover {
-            background-color: var(--primary-dark);
+            background: var(--bright-blue-btn-hover);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(67, 97, 238, 0.4);
         }
-        
+
         .btn-secondary {
-            background-color: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
+            background: var(--bright-btn);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
         }
-        
+
         .btn-secondary:hover {
-            background-color: rgba(58, 134, 255, 0.1);
+            background: var(--bright-btn-hover);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(58, 134, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
         }
-        
-        .btn-accent {
-            background-color: var(--accent);
-            color: white;
+
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
         }
-        
-        .btn-accent:hover {
-            background-color: #e0005e;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 0, 110, 0.3);
+
+        .btn-outline:hover {
+            background: rgba(0, 212, 170, 0.1);
+            transform: translateY(-2px);
         }
-        
-        /* Theme Toggle Button */
-        .theme-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: var(--transition);
+
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            border-radius: 10px;
         }
-        
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* Header */
+
+        /* Header Styles */
         header {
-            padding: 1.2rem 0;
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 20px 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            transition: var(--transition);
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 2px 15px var(--shadow);
+            border-bottom: 1px solid var(--border);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-family: 'Poppins', sans-serif;
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        .nav-links {
+            color: var(--text);
             display: flex;
-            list-style: none;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .logo-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
             align-items: center;
         }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
+
+        nav a {
             font-weight: 500;
-            transition: var(--transition);
+            transition: color 0.2s;
+            color: var(--text-light);
         }
-        
-        .nav-links a:hover {
-            color: var(--primary);
+
+        nav a:hover {
+            color: var(--accent);
         }
-        
+
         .mobile-menu-btn {
             display: none;
+            font-size: 1.5rem;
             background: none;
             border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
             cursor: pointer;
+            color: var(--text);
+            padding: 8px;
+            border-radius: 4px;
+            background: var(--dark-card);
         }
-        
+
         /* Hero Section */
         .hero {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, rgba(58, 134, 255, 0.05) 0%, rgba(131, 56, 236, 0.05) 100%);
-            position: relative;
-            overflow: hidden;
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--dark-bg) 0%, var(--dark-surface) 100%);
         }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(58, 134, 255, 0.1) 0%, rgba(58, 134, 255, 0) 70%);
-            top: -100px;
-            right: -100px;
-        }
-        
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 0, 110, 0.1) 0%, rgba(255, 0, 110, 0) 70%);
-            bottom: -50px;
-            left: -50px;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-text h1 {
+
+        .hero h1 {
+            font-size: 3.2rem;
             margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background: linear-gradient(90deg, var(--text) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        
-        .hero-text p {
+
+        .hero p {
             font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            color: var(--gray);
-            max-width: 600px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
         }
-        
-        .hero-cta {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .hero-visual {
-            flex: 1;
+
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 10px;
         }
-        
-        .typing-visual {
-            width: 100%;
-            max-width: 500px;
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            border-top: 5px solid var(--primary);
-            transition: var(--transition);
+
+        .tagline::before, .tagline::after {
+            content: "";
+            height: 2px;
+            width: 40px;
+            background: var(--accent);
+            opacity: 0.5;
         }
-        
-        .typing-text {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            color: var(--dark);
-        }
-        
-        .typing-stats {
+
+        .cta-buttons {
             display: flex;
-            justify-content: space-between;
-            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
         }
-        
-        .stat-item {
-            text-align: center;
+
+        .time-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-        
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+
+        .time-btn {
+            min-width: 140px;
+            background: var(--dark-card);
+            color: var(--text);
+            border: 1px solid var(--border);
         }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--gray);
+
+        .time-btn:hover {
+            background: var(--dark-surface);
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
-        
+
         /* Features Section */
         .features {
-            background-color: var(--body-bg);
+            background-color: var(--dark-surface);
         }
-        
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-        
+
         .feature-card {
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
+            background-color: var(--dark-card);
             padding: 2rem;
-            box-shadow: var(--shadow);
-            border-top: 4px solid var(--primary);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
-        
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s ease;
-        }
-        
-        .feature-card:hover::before {
-            transform: scaleX(1);
-        }
-        
+
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 24px rgba(108, 99, 255, 0.2);
         }
-        
+
         .feature-icon {
             font-size: 2.5rem;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 1.5rem;
         }
-        
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .feature-desc {
+            color: var(--text-light);
+        }
+
         /* How It Works */
-        .how-it-works {
-            background-color: var(--light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .how-it-works::before {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(131, 56, 236, 0.1) 0%, rgba(131, 56, 236, 0) 70%);
-            top: -50px;
-            right: -50px;
-        }
-        
-        .steps-container {
+        .steps {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             flex-wrap: wrap;
             gap: 2rem;
             margin-top: 3rem;
-            position: relative;
-            z-index: 1;
         }
-        
+
         .step {
             flex: 1;
             min-width: 250px;
+            max-width: 300px;
             text-align: center;
-            padding: 2rem;
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            background-color: var(--dark-card);
+            box-shadow: 0 4px 12px var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
         }
-        
+
         .step:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent);
         }
-        
+
         .step-number {
             display: inline-flex;
-            justify-content: center;
             align-items: center;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
             border-radius: 50%;
-            font-size: 1.5rem;
             font-weight: 700;
+            font-size: 1.3rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
         }
-        
-        /* Why Choose Us */
-        .why-choose {
-            background-color: var(--body-bg);
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text);
         }
-        
-        .why-grid {
+
+        .step-desc {
+            color: var(--text-light);
+        }
+
+        /* Trust Section */
+        .trust {
+            background-color: var(--dark-surface);
+        }
+
+        .trust-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trust-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-        
-        .why-card {
-            padding: 2rem;
-            background-color: var(--card-bg);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--accent);
-            transition: var(--transition);
+
+        .trust-item {
+            padding: 1.8rem;
+            background-color: var(--dark-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease;
         }
-        
-        .why-card:hover {
+
+        .trust-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary);
         }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            text-align: center;
-            padding: 5rem 0;
-            position: relative;
-            overflow: hidden;
+
+        .trust-icon {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
         }
-        
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
-            top: -100px;
-            right: -100px;
+
+        .trust-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--text);
         }
-        
-        .cta-section h2 {
-            color: white;
-            position: relative;
-            z-index: 1;
+
+        .trust-item p {
+            color: var(--text-light);
         }
-        
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-section .btn {
-            background-color: white;
-            color: var(--primary);
-            font-size: 1.1rem;
-            padding: 1rem 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .cta-section .btn:hover {
-            background-color: #f0f0f0;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        
+
         /* Footer */
         footer {
-            background-color: var(--light);
-            color: var(--gray);
-            padding: 4rem 0 2rem;
-            transition: var(--transition);
+            background-color: #0a0f1f;
+            color: #f1f5f9;
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border);
         }
-        
+
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
         }
-        
-        .footer-column h3 {
-            color: var(--dark);
+
+        .footer-logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .footer-heading {
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
+            color: var(--white);
         }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
+
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-        
+
         .footer-links a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
+            color: var(--text-light);
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
-        
+
         .footer-links a:hover {
-            color: var(--primary);
-            padding-left: 5px;
+            color: var(--accent);
         }
-        
-        .footer-bottom {
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            color: var(--accent);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .footer-links a:hover i {
+            opacity: 1;
+        }
+
+        .copyright {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
             font-size: 0.9rem;
         }
-        
-        .footer-disclaimer {
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-top: 1.5rem;
-            color: var(--gray);
+
+        /* Mobile Menu Styles */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--dark-surface);
+            padding: 1rem 0;
+            box-shadow: 0 5px 15px var(--shadow);
+            z-index: 99;
+            border-top: 1px solid var(--border);
         }
-        
-        /* Responsive Design */
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav li {
+            width: 100%;
+        }
+
+        .mobile-nav a, .mobile-nav button {
+            display: block;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-light);
+            background: none;
+            border-right: none;
+            border-left: none;
+            border-top: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav a:hover, .mobile-nav button:hover {
+            background-color: var(--dark-card);
+            color: var(--accent);
+        }
+
+        /* Responsive Styles */
         @media (max-width: 992px) {
-            h1 {
-                font-size: 2.4rem;
+            .hero h1 {
+                font-size: 2.8rem;
             }
             
-            h2 {
+            .section-title {
                 font-size: 2rem;
             }
-            
-            .hero-content {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .hero-cta {
-                justify-content: center;
-            }
         }
-        
+
         @media (max-width: 768px) {
-            .nav-links {
+            .header-content {
+                padding: 0 15px;
+            }
+            
+            .desktop-nav {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: var(--card-bg);
-                flex-direction: column;
-                padding: 1.5rem;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            }
-            
-            .nav-links.active {
-                display: flex;
-            }
-            
-            .nav-links li {
-                margin: 0.8rem 0;
             }
             
             .mobile-menu-btn {
                 display: block;
             }
             
-            .hero-cta {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .cta-buttons, .time-options {
                 flex-direction: column;
                 align-items: center;
             }
             
-            .btn {
+            .time-btn {
                 width: 100%;
-                max-width: 300px;
-                text-align: center;
-            }
-            
-            section {
-                padding: 3.5rem 0;
+                max-width: 250px;
             }
         }
-        
+
         @media (max-width: 576px) {
-            h1 {
+            .hero h1 {
                 font-size: 2rem;
             }
             
-            h2 {
-                font-size: 1.7rem;
+            .section-title {
+                font-size: 1.8rem;
             }
             
-            .typing-visual {
-                padding: 1.5rem;
+            .btn-large {
+                padding: 14px 24px;
+                font-size: 1rem;
             }
             
-            .theme-toggle {
-                bottom: 20px;
-                right: 20px;
-                width: 45px;
-                height: 45px;
+            .step {
+                min-width: 100%;
+            }
+            
+            .tagline::before, .tagline::after {
+                width: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </button>
-
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <a href="#" class="logo">Typing <span>Nova</span></a>
+            <a href="#" class="logo">
+                <i class="fas fa-keyboard logo-icon"></i>
+                Typing<span>Nova</span>
+            </a>
             
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#speed-test">Speed Test</a></li>
+                    <li><a href="#passage-typing">Passage Typing</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><button class="btn btn-primary" id="startTypingBtn">Start Typing</button></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#">Home</a></li>
-                <li><a href="practice.html">Practice</a></li>
-                <li><a href="#">Speed Test</a></li>
-                <li><a href="#">Passage Typing</a></li>
-                <li><a href="#">Results</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#" class="btn btn-primary">Start Typing Practice</a></li>
-            </ul>
         </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#speed-test">Speed Test</a></li>
+                <li><a href="#passage-typing">Passage Typing</a></li>
+                <li><a href="#about">About</a></li>
+                <li><button class="btn btn-primary" id="startTypingMobileBtn" style="width: 100%; margin: 1rem 0; border: none;">Start Typing</button></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Improve Your Typing Speed and Accuracy</h1>
-                <p>Practice typing with structured lessons, real-time feedback, and clean results designed to help you type faster and more accurately.</p>
-                <div class="hero-cta">
-                    <a href="practice.html" class="btn btn-primary">Start Practice</a>
-                    <a href="#" class="btn btn-secondary">Try Passage Typing</a>
-                    <a href="#" class="btn btn-accent">Speed Test</a>
-                </div>
+        <div class="container">
+            <p class="tagline">Practice. Improve. Perform.</p>
+            <h1>Test and Improve Your Typing Speed</h1>
+            <p>Practice typing with short speed tests and full passage typing to improve accuracy and consistency.</p>
+            
+            <div class="cta-buttons">
+                <button class="btn btn-primary btn-large" id="startTypingHeroBtn">
+                    <i class="fas fa-play-circle" style="margin-right: 8px;"></i>
+                    Start Typing
+                </button>
+                <a href="#passage-typing" class="btn btn-secondary btn-large">
+                    <i class="fas fa-align-left" style="margin-right: 8px;"></i>
+                    Passage Typing
+                </a>
             </div>
             
-            <div class="hero-visual">
-                <div class="typing-visual">
-                    <div class="typing-text">
-                        The quick brown fox jumps over the lazy dog. This classic sentence contains every letter in the English alphabet. Practice typing it repeatedly to improve your speed and accuracy.
-                    </div>
-                    <div class="typing-stats">
-                        <div class="stat-item">
-                            <div class="stat-value">65</div>
-                            <div class="stat-label">WPM</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">98%</div>
-                            <div class="stat-label">Accuracy</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-value">2</div>
-                            <div class="stat-label">Errors</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="time-options">
+                <button class="btn time-btn" data-time="1">
+                    <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                    1 Minute Test
+                </button>
+                <button class="btn time-btn" data-time="3">
+                    <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                    3 Minute Test
+                </button>
+                <button class="btn time-btn" data-time="5">
+                    <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                    5 Minute Test
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="section features" id="speed-test">
         <div class="container">
-            <h2>Practice. Improve. Perform.</h2>
+            <h2 class="section-title">Typing Practice Features</h2>
+            <p class="section-subtitle">Everything you need to improve your typing speed and accuracy in a clean, distraction-free environment.</p>
+            
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-keyboard"></i>
+                        <i class="fas fa-clock"></i>
                     </div>
-                    <h3>Typing Practice</h3>
-                    <p>Practice typing with simple and advanced text exercises designed to improve your keyboard familiarity and muscle memory.</p>
+                    <h3 class="feature-title">Timed Speed Tests</h3>
+                    <p class="feature-desc">Choose from 1, 3, and 5 minute tests to measure your typing speed under time constraints.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-file-alt"></i>
+                        <i class="fas fa-align-left"></i>
                     </div>
-                    <h3>Passage Typing Mode</h3>
-                    <p>Type full passages displayed on screen, focusing on accuracy, spacing, and consistency for real-world typing scenarios.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tachometer-alt"></i>
-                    </div>
-                    <h3>Accurate Speed Calculation</h3>
-                    <p>Get reliable WPM and accuracy results with transparent error counting to track your progress over time.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-language"></i>
-                    </div>
-                    <h3>Multiple Languages</h3>
-                    <p>Practice typing in English and Marathi with language-specific exercises and character sets.</p>
+                    <h3 class="feature-title">Passage Typing</h3>
+                    <p class="feature-desc">Practice typing full passages displayed on screen to improve accuracy and consistency.</p>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Clean Result Summary</h3>
-                    <p>View detailed statistics including speed, accuracy, total characters, and errors to identify areas for improvement.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-clock"></i>
-                    </div>
-                    <h3>Progress Tracking</h3>
-                    <p>Monitor your typing improvement over time with visual progress charts and historical performance data.</p>
+                    <h3 class="feature-title">Accurate Results</h3>
+                    <p class="feature-desc">Speed, accuracy, and errors calculated clearly to help you track your improvement.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- How It Works -->
-    <section class="how-it-works">
+    <section class="section">
         <div class="container">
-            <h2>How Typing Nova Works</h2>
-            <div class="steps-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Start practicing your typing skills in just a few simple steps.</p>
+            
+            <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Choose a Typing Mode</h3>
-                    <p>Select from various practice modes including speed tests, passage typing, or structured lessons.</p>
+                    <h3 class="step-title">Choose Your Practice</h3>
+                    <p class="step-desc">Select a timed test (1, 3, or 5 minutes) or passage typing mode based on your practice goals.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Start Typing the Given Text</h3>
-                    <p>Type the text displayed on your screen. Focus on both speed and accuracy as you practice.</p>
+                    <h3 class="step-title">Start Typing</h3>
+                    <p class="step-desc">Begin typing the text displayed on your screen. Focus on both speed and accuracy as you type.</p>
                 </div>
                 
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>View Your Speed and Accuracy</h3>
-                    <p>Get immediate feedback on your typing performance with detailed metrics and insights.</p>
+                    <h3 class="step-title">View Your Results</h3>
+                    <p class="step-desc">Review your typing speed (WPM), accuracy percentage, and errors to track your progress.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Typing Nova -->
-    <section class="why-choose">
+    <!-- Trust Section -->
+    <section class="section trust" id="about">
         <div class="container">
-            <h2>Why Choose Typing Nova</h2>
-            <div class="why-grid">
-                <div class="why-card">
-                    <h3>Designed for Practice</h3>
-                    <p>Typing Nova is designed purely for typing practice and skill improvement, without distractions or unrelated features.</p>
-                </div>
-                
-                <div class="why-card">
-                    <h3>Clean Interface</h3>
-                    <p>Our minimal, intuitive interface allows you to focus entirely on your typing without unnecessary clutter.</p>
-                </div>
-                
-                <div class="why-card">
-                    <h3>Privacy Focused</h3>
-                    <p>We respect your privacy. Your typing data is used only to provide feedback and track your personal progress.</p>
-                </div>
-                
-                <div class="why-card">
-                    <h3>Daily Improvement</h3>
-                    <p>Suitable for daily practice with exercises that adapt to your current skill level for continuous improvement.</p>
-                </div>
-                
-                <div class="why-card">
-                    <h3>Real-Time Feedback</h3>
-                    <p>Get immediate feedback on errors and speed as you type, helping you correct mistakes instantly.</p>
-                </div>
-                
-                <div class="why-card">
-                    <h3>Free Access</h3>
-                    <p>All core typing practice features are completely free, making skill improvement accessible to everyone.</p>
+            <h2 class="section-title">Designed for Daily Practice</h2>
+            <p class="section-subtitle">A clean, focused environment to help you build typing skills consistently.</p>
+            
+            <div class="trust-content">
+                <div class="trust-list">
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Daily Practice</h3>
+                        <p>Designed for regular typing practice to build muscle memory and speed.</p>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-eye-slash"></i>
+                        </div>
+                        <h3>No Distractions</h3>
+                        <p>Minimal interface keeps you focused on typing without unnecessary elements.</p>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>Simple to Use</h3>
+                        <p>Get started immediately with an intuitive interface that requires no learning curve.</p>
+                    </div>
+                    
+                    <div class="trust-item">
+                        <div class="trust-icon">
+                            <i class="fas fa-gift"></i>
+                        </div>
+                        <h3>Completely Free</h3>
+                        <p>Practice as much as you want with no fees, subscriptions, or hidden costs.</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2>Start Practicing Typing Today — It's Free</h2>
-            <p>Join thousands of users who are improving their typing skills with Typing Nova. No sign-up required for basic practice.</p>
-            <a href="#" class="btn">Start Free Practice</a>
         </div>
     </section>
 
@@ -861,137 +807,171 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Typing Nova</h3>
-                    <p>Practice. Improve. Perform.</p>
-                    <p>A dedicated platform for improving typing speed and accuracy through structured practice.</p>
+                <div class="footer-about-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-keyboard"></i>
+                        Typing<span>Nova</span>
+                    </div>
+                    <p class="footer-about">Typing Nova provides a clean, professional environment for practicing and improving typing speed and accuracy through timed tests and passage typing.</p>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
+                <div>
+                    <h3 class="footer-heading">Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Practice</a></li>
-                        <li><a href="#">Speed Test</a></li>
-                        <li><a href="#">Passage Typing</a></li>
-                        <li><a href="#">Results</a></li>
+                        <li><a href="#">Home <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#speed-test">Speed Test <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#passage-typing">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#about">About <i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Resources</h3>
+                <div>
+                    <h3 class="footer-heading">Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Privacy Policy <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">Terms & Conditions <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">Cookie Policy <i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Contact</h3>
+                <div>
+                    <h3 class="footer-heading">Contact</h3>
                     <ul class="footer-links">
-                        <li><a href="mailto:contact@typingnova.com">contact@typingnova.com</a></li>
-                        <li><a href="#">Feedback Form</a></li>
-                        <li><a href="#">Feature Request</a></li>
+                        <li><a href="#">Contact Us <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">Feedback <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="#">Support <i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="footer-disclaimer">
-                <p><strong>Disclaimer:</strong> Typing Nova is an independent typing practice platform designed to help users improve their typing skills. This website is not affiliated with, endorsed by, or connected to any official testing organizations, government bodies, or certification programs. All content is provided for educational and practice purposes only.</p>
-                <p>Results may vary based on individual practice and dedication. We make no guarantees regarding specific typing speed improvements or outcomes.</p>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span id="currentYear"></span> Typing Nova. All rights reserved.</p>
+            <div class="copyright">
+                © <span id="currentYear"></span> Typing Nova – All rights reserved
             </div>
         </div>
     </footer>
 
     <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme or prefer-color-scheme
-        const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeIcon(savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcon(newTheme);
-            
-            // Add animation effect
-            themeToggle.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                themeToggle.style.transform = 'scale(1)';
-            }, 300);
-        });
-        
-        function updateThemeIcon(theme) {
-            if (theme === 'dark') {
-                themeIcon.className = 'fas fa-sun';
-            } else {
-                themeIcon.className = 'fas fa-moon';
-            }
-        }
-        
-        // Mobile menu toggle
+        // DOM Elements
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
+        const mobileNav = document.getElementById('mobileNav');
+        const startTypingBtn = document.getElementById('startTypingBtn');
+        const startTypingMobileBtn = document.getElementById('startTypingMobileBtn');
+        const startTypingHeroBtn = document.getElementById('startTypingHeroBtn');
+        const timeButtons = document.querySelectorAll('.time-btn');
+        const currentYearSpan = document.getElementById('currentYear');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        // Set current year in footer
+        currentYearSpan.textContent = new Date().getFullYear();
+        
+        // Mobile Menu Toggle - FIXED
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent event bubbling
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = mobileNav.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
         });
         
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
         
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+        // Close mobile menu when clicking a link inside it
+        mobileNav.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
         
-        // Simple typing visualization effect for hero section
-        const typingText = document.querySelector('.typing-text');
-        const originalText = typingText.textContent;
-        const statValueWPM = document.querySelector('.stat-value');
-        const statValueAccuracy = document.querySelectorAll('.stat-value')[1];
-        const statValueErrors = document.querySelectorAll('.stat-value')[2];
+        // Start Typing Button Handler
+        function startTyping() {
+            // In a real implementation, this would redirect to the typing test page
+            // For this demo, we'll show an alert and scroll to the features section
+            alert("Starting typing test... In a full implementation, this would navigate to the typing test interface.");
+            window.scrollTo({
+                top: document.querySelector('.features').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
         
-        // Simulate dynamic stat changes
-        let wpm = 65;
-        let accuracy = 98;
-        let errors = 2;
+        // Start Typing with specific time
+        function startTimedTest(minutes) {
+            alert(`Starting ${minutes} minute typing test... In a full implementation, this would start a ${minutes}-minute timed test.`);
+            // Scroll to features section
+            window.scrollTo({
+                top: document.querySelector('.features').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
         
-        setInterval(() => {
-            // Random small fluctuations in stats for visual effect
-            wpm = Math.max(40, Math.min(120, wpm + (Math.random() - 0.5) * 5));
-            accuracy = Math.max(85, Math.min(100, accuracy + (Math.random() - 0.5) * 0.5));
-            errors = Math.max(0, Math.min(10, errors + (Math.random() - 0.5) * 0.5));
-            
-            statValueWPM.textContent = Math.round(wpm);
-            statValueAccuracy.textContent = Math.round(accuracy) + '%';
-            statValueErrors.textContent = Math.round(errors);
-        }, 3000);
+        // Event Listeners
+        startTypingBtn.addEventListener('click', startTyping);
+        startTypingMobileBtn.addEventListener('click', startTyping);
+        startTypingHeroBtn.addEventListener('click', startTyping);
         
-        // Add hover effect to cards with delay for visual interest
-        document.querySelectorAll('.feature-card, .step, .why-card').forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.05}s`;
+        // Time button event listeners
+        timeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const time = button.getAttribute('data-time');
+                startTimedTest(time);
+            });
         });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') return;
+                
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mobileNav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            });
+        });
+        
+        // Add visual feedback for buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'translateY(0)';
+            });
+            
+            button.addEventListener('mouseup', () => {
+                if (button.classList.contains('btn-primary') || button.classList.contains('btn-secondary')) {
+                    button.style.transform = 'translateY(-3px)';
+                } else {
+                    button.style.transform = 'translateY(-2px)';
+                }
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+        
+        // Add keyboard icon animation
+        const keyboardIcon = document.querySelector('.logo-icon');
+        setInterval(() => {
+            keyboardIcon.style.transform = 'translateY(-2px)';
+            setTimeout(() => {
+                keyboardIcon.style.transform = 'translateY(0)';
+            }, 200);
+        }, 3000);
     </script>
 </body>
 </html>
