@@ -6,8 +6,7 @@
     <title>Passage Typing Practice | Typing Nova</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS Reset */
         * {
@@ -16,30 +15,32 @@
             box-sizing: border-box;
         }
 
-        /* Variables */
+        /* Variables - MSCEIA Style */
         :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #4cc9f0;
-            --accent: #7209b7;
-            --success: #4ade80;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --success: #10b981;
             --error: #ef4444;
             --warning: #f59e0b;
-            --dark-bg: #0f172a;
-            --dark-surface: #1e293b;
-            --dark-card: #334155;
-            --text: #f1f5f9;
-            --text-light: #cbd5e1;
-            --text-muted: #94a3b8;
-            --border: #475569;
+            --dark-bg: #111827;
+            --dark-surface: #1f2937;
+            --dark-card: #374151;
+            --text: #f9fafb;
+            --text-light: #d1d5db;
+            --text-muted: #9ca3af;
+            --border: #4b5563;
             --white: #ffffff;
-            --shadow: rgba(0, 0, 0, 0.3);
-            --shadow-hover: rgba(0, 0, 0, 0.5);
-            --correct-bg: rgba(74, 222, 128, 0.1);
-            --incorrect-bg: rgba(239, 68, 68, 0.1);
-            --current-bg: rgba(67, 97, 238, 0.15);
-            --correct-border: rgba(74, 222, 128, 0.3);
+            --shadow: rgba(0, 0, 0, 0.25);
+            --shadow-hover: rgba(0, 0, 0, 0.35);
+            --correct-bg: rgba(16, 185, 129, 0.15);
+            --incorrect-bg: rgba(239, 68, 68, 0.15);
+            --current-bg: rgba(37, 99, 235, 0.2);
+            --correct-border: rgba(16, 185, 129, 0.3);
             --incorrect-border: rgba(239, 68, 68, 0.3);
+            --timer-red: #dc2626;
+            --timer-yellow: #d97706;
+            --timer-green: #059669;
         }
 
         /* Base Styles */
@@ -53,12 +54,6 @@
             flex-direction: column;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-
         a {
             text-decoration: none;
             color: inherit;
@@ -66,7 +61,7 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -75,15 +70,15 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             border: none;
             font-family: 'Inter', sans-serif;
-            gap: 8px;
+            gap: 6px;
         }
 
         .btn-primary {
@@ -93,8 +88,8 @@
 
         .btn-primary:hover {
             background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px var(--shadow-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--shadow);
         }
 
         .btn-secondary {
@@ -105,8 +100,7 @@
 
         .btn-secondary:hover {
             background-color: var(--dark-surface);
-            border-color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .btn-danger {
@@ -116,12 +110,12 @@
 
         .btn-danger:hover {
             background-color: #dc2626;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
-        /* Header */
+        /* Header - MSCEIA Style */
         header {
-            padding: 15px 0;
+            padding: 12px 0;
             background-color: var(--dark-surface);
             border-bottom: 1px solid var(--border);
         }
@@ -133,9 +127,8 @@
         }
 
         .logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 600;
             color: var(--text);
             display: flex;
             align-items: center;
@@ -143,66 +136,75 @@
         }
 
         .logo span {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .nav-links {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
 
         .nav-links a {
             color: var(--text-light);
             font-weight: 500;
+            font-size: 0.9rem;
             transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
-        /* Top Status Bar */
+        /* Top Status Bar - MSCEIA Style */
         .status-bar {
             position: sticky;
             top: 0;
             background-color: var(--dark-surface);
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid var(--border);
             z-index: 100;
-            box-shadow: 0 4px 12px var(--shadow);
+            box-shadow: 0 2px 8px var(--shadow);
         }
 
-        .status-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 1rem;
+        .status-content {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
+        .status-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .status-right {
+            display: flex;
+            gap: 15px;
+        }
+
         .status-item {
-            text-align: center;
-            padding: 10px;
-            background-color: var(--dark-card);
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
         }
 
         .status-label {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-bottom: 4px;
+            margin-bottom: 2px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .status-value {
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
         }
 
         .time-remaining {
-            color: var(--secondary);
+            color: var(--timer-green);
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
         }
 
         .gross-wpm {
@@ -217,104 +219,117 @@
             color: var(--success);
         }
 
-        /* Main Content */
+        /* Main Content - Side by Side Layout */
         main {
             flex: 1;
-            padding: 30px 0;
+            padding: 20px 0;
         }
 
         .page-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .page-title h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, var(--text) 0%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 600;
         }
 
         .page-title p {
             color: var(--text-light);
+            font-size: 0.95rem;
             max-width: 600px;
             margin: 0 auto;
         }
 
-        /* Passage Container */
-        .passage-container {
-            margin-bottom: 30px;
-            background-color: var(--dark-surface);
-            border-radius: 12px;
-            padding: 25px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 12px var(--shadow);
+        /* Two Column Layout - MSCEIA Style */
+        .typing-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 65vh;
+            min-height: 500px;
         }
 
-        .passage-header {
+        .passage-column, .typing-column {
+            display: flex;
+            flex-direction: column;
+            background-color: var(--dark-surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .column-header {
+            padding: 12px 20px;
+            background-color: var(--dark-card);
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border);
         }
 
-        .passage-info {
+        .column-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .column-info {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
 
         .info-item {
             display: flex;
             flex-direction: column;
+            align-items: flex-end;
         }
 
         .info-label {
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
-            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .info-value {
+            font-size: 0.9rem;
             font-weight: 600;
-            font-size: 1.1rem;
         }
 
+        /* Passage Display Area - Left Side */
         .passage-content {
-            font-size: 1.2rem;
-            line-height: 1.8;
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            font-size: 1.05rem;
+            line-height: 1.7;
             white-space: pre-wrap;
             word-wrap: break-word;
-            font-family: 'Inter', sans-serif;
             color: var(--text);
-            background-color: var(--dark-card);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            min-height: 200px;
-            max-height: 400px;
-            overflow-y: auto;
+            background-color: var(--dark-surface);
+            font-family: 'Inter', sans-serif;
         }
 
         /* Character styling within passage */
         .char {
-            padding: 2px 1px;
-            border-radius: 3px;
+            padding: 1px 0;
+            border-radius: 2px;
             transition: all 0.1s;
+            position: relative;
         }
 
         .char.correct {
             background-color: var(--correct-bg);
-            border-bottom: 2px solid var(--correct-border);
             color: var(--success);
         }
 
         .char.incorrect {
             background-color: var(--incorrect-bg);
-            border-bottom: 2px solid var(--incorrect-border);
             color: var(--error);
             text-decoration: line-through;
         }
@@ -325,50 +340,46 @@
             animation: pulse 1.5s infinite;
         }
 
+        .char.current::after {
+            content: '|';
+            position: absolute;
+            right: -2px;
+            color: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
         @keyframes pulse {
             0% { background-color: var(--current-bg); }
-            50% { background-color: rgba(67, 97, 238, 0.25); }
+            50% { background-color: rgba(37, 99, 235, 0.3); }
             100% { background-color: var(--current-bg); }
         }
 
-        /* Typing Input Area */
-        .typing-container {
-            margin-bottom: 30px;
-            background-color: var(--dark-surface);
-            border-radius: 12px;
-            padding: 25px;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 12px var(--shadow);
-        }
-
-        .typing-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid var(--border);
-        }
-
+        /* Typing Input Area - Right Side */
         .typing-area {
+            flex: 1;
             width: 100%;
-            min-height: 180px;
-            font-size: 1.2rem;
-            line-height: 1.8;
             padding: 20px;
             background-color: var(--dark-card);
             color: var(--text);
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            resize: vertical;
+            border: none;
+            resize: none;
+            font-size: 1.05rem;
+            line-height: 1.7;
             font-family: 'Inter', sans-serif;
-            transition: border-color 0.3s;
+            overflow-y: auto;
+            outline: none;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .typing-area:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            box-shadow: inset 0 0 0 2px var(--primary);
         }
 
         .typing-area.disabled {
@@ -377,213 +388,241 @@
             opacity: 0.7;
         }
 
-        .instructions {
-            margin-top: 15px;
-            font-size: 0.9rem;
+        .typing-area::placeholder {
             color: var(--text-muted);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .instruction-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .instruction-item i {
-            font-size: 0.8rem;
+            font-style: italic;
         }
 
         /* Control Buttons */
         .controls {
             display: flex;
             justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        /* Instructions */
+        .instructions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 15px;
-            margin-bottom: 30px;
+            margin: 15px 0;
+            padding: 12px;
+            background-color: var(--dark-surface);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .instruction-item i {
+            font-size: 0.8rem;
+        }
+
+        .instruction-item .key {
+            background-color: var(--dark-card);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            font-family: monospace;
+            font-size: 0.8rem;
         }
 
         /* Results Section */
         .results-container {
             display: none;
-            margin-bottom: 30px;
+            margin: 25px 0;
             background-color: var(--dark-surface);
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: 8px;
+            padding: 25px;
             border: 1px solid var(--border);
             box-shadow: 0 4px 12px var(--shadow);
         }
 
         .results-container.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .results-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .results-header h2 {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
             color: var(--text);
+            font-weight: 600;
         }
 
         .results-header p {
             color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
         }
 
         .result-card {
             text-align: center;
-            padding: 25px 15px;
+            padding: 20px 15px;
             background-color: var(--dark-card);
-            border-radius: 10px;
+            border-radius: 8px;
             border: 1px solid var(--border);
         }
 
         .result-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
-            font-family: 'Poppins', sans-serif;
             margin-bottom: 5px;
         }
 
         .result-label {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
         }
 
         .result-gross {
-            border-top: 4px solid var(--primary);
+            border-top: 3px solid var(--primary);
         }
 
         .result-net {
-            border-top: 4px solid var(--success);
+            border-top: 3px solid var(--success);
         }
 
         .result-errors {
-            border-top: 4px solid var(--error);
+            border-top: 3px solid var(--error);
         }
 
         .result-accuracy {
-            border-top: 4px solid var(--secondary);
+            border-top: 3px solid var(--secondary);
         }
 
         .result-chars {
-            border-top: 4px solid var(--accent);
+            border-top: 3px solid var(--accent);
         }
 
         .results-actions {
             display: flex;
             justify-content: center;
-            gap: 15px;
-        }
-
-        /* Timer Warning */
-        .timer-warning {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: rgba(245, 158, 11, 0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: var(--warning);
+            gap: 12px;
         }
 
         /* Footer */
         footer {
-            background-color: #0a0f1f;
+            background-color: #0f172a;
             color: #f1f5f9;
-            padding: 40px 0 25px;
+            padding: 30px 0 20px;
             border-top: 1px solid var(--border);
             margin-top: auto;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.3rem;
+            font-weight: 600;
             color: var(--white);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .footer-logo span {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .footer-about {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         .footer-heading {
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
             color: var(--white);
         }
 
         .footer-links li {
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.6rem;
         }
 
         .footer-links a {
             color: var(--text-light);
             transition: color 0.2s;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .footer-links a:hover {
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .copyright {
             text-align: center;
-            padding-top: 1.5rem;
+            padding-top: 1.2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .typing-container {
+                height: 60vh;
+            }
+        }
+
         @media (max-width: 992px) {
-            .status-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .typing-container {
+                grid-template-columns: 1fr;
+                height: auto;
+                min-height: 800px;
             }
             
-            .passage-info {
-                flex-wrap: wrap;
+            .passage-column, .typing-column {
+                height: 400px;
+            }
+            
+            .status-content {
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+            
+            .status-right {
+                width: 100%;
+                justify-content: space-between;
             }
         }
 
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
             }
             
             .nav-links {
@@ -591,18 +630,28 @@
                 flex-wrap: wrap;
             }
             
-            .status-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .status-left, .status-right {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .status-item {
+                min-width: 80px;
             }
             
             .page-title h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
-            .passage-header, .typing-header {
+            .column-header {
                 flex-direction: column;
-                gap: 15px;
+                gap: 10px;
                 align-items: flex-start;
+            }
+            
+            .column-info {
+                width: 100%;
+                justify-content: space-between;
             }
             
             .results-grid {
@@ -616,13 +665,17 @@
             
             .btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
             }
         }
 
         @media (max-width: 576px) {
-            .status-grid {
-                grid-template-columns: 1fr;
+            .typing-container {
+                min-height: 700px;
+            }
+            
+            .passage-column, .typing-column {
+                height: 350px;
             }
             
             .results-grid {
@@ -630,12 +683,17 @@
             }
             
             .page-title h1 {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
             .passage-content, .typing-area {
                 font-size: 1rem;
                 line-height: 1.6;
+                padding: 15px;
+            }
+            
+            .status-value {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -659,27 +717,33 @@
 
     <!-- Top Status Bar -->
     <div class="status-bar">
-        <div class="container status-grid">
-            <div class="status-item">
-                <div class="status-label">Time Remaining</div>
-                <div class="status-value time-remaining" id="timeRemaining">07:00</div>
+        <div class="container status-content">
+            <div class="status-left">
+                <div class="status-item">
+                    <div class="status-label">Time Remaining</div>
+                    <div class="status-value time-remaining" id="timeRemaining">07:00</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Current Position</div>
+                    <div class="status-value" id="currentPosition">0 / 0</div>
+                </div>
             </div>
-            <div class="status-item">
-                <div class="status-label">Gross Speed</div>
-                <div class="status-value gross-wpm" id="grossWPM">0</div>
-            </div>
-            <div class="status-item">
-                <div class="status-label">Errors</div>
-                <div class="status-value errors-count" id="errorsCount">0</div>
-            </div>
-            <div class="status-item">
-                <div class="status-label">Accuracy</div>
-                <div class="status-value accuracy-percent" id="accuracyPercent">100%</div>
-            </div>
-            <div class="status-item">
+            <div class="status-right">
+                <div class="status-item">
+                    <div class="status-label">Gross WPM</div>
+                    <div class="status-value gross-wpm" id="grossWPM">0</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Errors</div>
+                    <div class="status-value errors-count" id="errorsCount">0</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Accuracy</div>
+                    <div class="status-value accuracy-percent" id="accuracyPercent">100%</div>
+                </div>
                 <button class="btn btn-danger" id="resetButton">
                     <i class="fas fa-redo"></i>
-                    Reset Test
+                    Reset
                 </button>
             </div>
         </div>
@@ -691,71 +755,71 @@
             <!-- Page Title -->
             <div class="page-title">
                 <h1>7-Minute Passage Typing Practice</h1>
-                <p>Practice typing full passages with realistic timing. Each passage contains approximately 350 words for 7 minutes of practice.</p>
+                <p>Type the passage shown on the left side in the typing area on the right side. Timer starts with your first keystroke.</p>
             </div>
 
-            <!-- Timer Warning -->
-            <div class="timer-warning">
-                <i class="fas fa-clock"></i>
-                This is a 7-minute typing practice. Timer starts with your first keystroke.
-            </div>
-
-            <!-- Passage Display -->
-            <div class="passage-container">
-                <div class="passage-header">
-                    <h2>Practice Passage</h2>
-                    <div class="passage-info">
-                        <div class="info-item">
-                            <div class="info-label">Characters</div>
-                            <div class="info-value" id="totalChars">0</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Words</div>
-                            <div class="info-value" id="totalWords">0</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">Duration</div>
-                            <div class="info-value">7 minutes</div>
-                        </div>
-                    </div>
+            <!-- Instructions -->
+            <div class="instructions">
+                <div class="instruction-item">
+                    <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                    <span>Type exactly as shown, character by character</span>
                 </div>
-                <div class="passage-content" id="passageDisplay">
-                    Loading passage...
+                <div class="instruction-item">
+                    <i class="fas fa-exclamation-triangle" style="color: var(--error);"></i>
+                    <span>Errors counted even if corrected</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-clock" style="color: var(--success);"></i>
+                    <span>7-minute timer | <span class="key">Tab</span> to switch focus</span>
                 </div>
             </div>
 
-            <!-- Typing Input Area -->
+            <!-- Two Column Layout -->
             <div class="typing-container">
-                <div class="typing-header">
-                    <h2>Your Typing</h2>
-                    <div class="info-item">
-                        <div class="info-label">Current Position</div>
-                        <div class="info-value" id="currentPosition">0 / 0</div>
+                <!-- Left Column: Passage Display -->
+                <div class="passage-column">
+                    <div class="column-header">
+                        <div class="column-title">Passage to Type</div>
+                        <div class="column-info">
+                            <div class="info-item">
+                                <div class="info-label">Words</div>
+                                <div class="info-value" id="totalWords">0</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-label">Chars</div>
+                                <div class="info-value" id="totalChars">0</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="passage-content" id="passageDisplay">
+                        Loading passage...
                     </div>
                 </div>
-                <textarea 
-                    class="typing-area" 
-                    id="typingInput" 
-                    placeholder="Start typing the passage above. The 7-minute timer will begin with your first keystroke."
-                    rows="6"
-                    spellcheck="false"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autocapitalize="off"
-                ></textarea>
-                <div class="instructions">
-                    <div class="instruction-item">
-                        <i class="fas fa-info-circle" style="color: var(--primary);"></i>
-                        <span>Type character-by-character exactly as shown</span>
+
+                <!-- Right Column: Typing Area -->
+                <div class="typing-column">
+                    <div class="column-header">
+                        <div class="column-title">Your Typing</div>
+                        <div class="column-info">
+                            <div class="info-item">
+                                <div class="info-label">Progress</div>
+                                <div class="info-value" id="progressPercent">0%</div>
+                            </div>
+                            <button class="btn btn-secondary btn-small" id="focusTypingBtn">
+                                <i class="fas fa-mouse-pointer"></i>
+                                Focus Here
+                            </button>
+                        </div>
                     </div>
-                    <div class="instruction-item">
-                        <i class="fas fa-exclamation-triangle" style="color: var(--error);"></i>
-                        <span>Errors are counted even if corrected</span>
-                    </div>
-                    <div class="instruction-item">
-                        <i class="fas fa-clock" style="color: var(--secondary);"></i>
-                        <span>7-minute timer starts with first keystroke</span>
-                    </div>
+                    <textarea 
+                        class="typing-area" 
+                        id="typingInput" 
+                        placeholder="Start typing here. The 7-minute timer will begin with your first keystroke. Press Tab to switch between passage and typing area."
+                        spellcheck="false"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                    ></textarea>
                 </div>
             </div>
 
@@ -779,7 +843,7 @@
             <div class="results-container" id="resultsContainer">
                 <div class="results-header">
                     <h2>Typing Practice Results</h2>
-                    <p>Review your 7-minute typing performance</p>
+                    <p>Your 7-minute typing practice results</p>
                 </div>
                 <div class="results-grid">
                     <div class="result-card result-gross">
@@ -815,10 +879,10 @@
                 </div>
             </div>
 
-            <!-- AdSense Safe Area (After Results) -->
-            <div class="ad-container" style="margin: 40px 0; text-align: center; color: var(--text-muted); font-size: 0.9rem; padding: 20px; background-color: var(--dark-surface); border-radius: 8px; border: 1px dashed var(--border);">
+            <!-- AdSense Safe Area -->
+            <div class="ad-container" style="margin: 30px 0; text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 15px; background-color: var(--dark-surface); border-radius: 6px; border: 1px dashed var(--border);">
                 <p>Advertisement Area</p>
-                <p style="margin-top: 10px; font-size: 0.8rem;">(This area is designed for AdSense ads. It appears only after completing a practice session.)</p>
+                <p style="margin-top: 8px; font-size: 0.75rem;">This area is designed for AdSense ads. It appears only after completing a practice session.</p>
             </div>
         </div>
     </main>
@@ -832,7 +896,7 @@
                         <i class="fas fa-keyboard"></i>
                         Typing<span>Nova</span>
                     </div>
-                    <p class="footer-about">Typing Nova provides a clean, professional environment for practicing and improving typing speed and accuracy through timed tests and passage typing.</p>
+                    <p class="footer-about">Typing Nova provides a professional environment for practicing typing speed and accuracy through timed tests and passage typing.</p>
                 </div>
                 <div>
                     <h3 class="footer-heading">Quick Links</h3>
@@ -851,14 +915,6 @@
                         <li><a href="cookies.html">Cookie Policy</a></li>
                     </ul>
                 </div>
-                <div>
-                    <h3 class="footer-heading">Contact</h3>
-                    <ul class="footer-links">
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="feedback.html">Feedback</a></li>
-                        <li><a href="support.html">Support</a></li>
-                    </ul>
-                </div>
             </div>
             <div class="copyright">
                 © <span id="currentYear"></span> Typing Nova – All rights reserved
@@ -866,8 +922,11 @@
         </div>
     </footer>
 
+    <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
     <script>
-        // Typing Practice Application with 7-minute format
+        // Typing Practice Application with Side-by-Side Layout
         class PassageTypingPractice {
             constructor() {
                 // DOM Elements
@@ -880,10 +939,12 @@
                 this.totalChars = document.getElementById('totalChars');
                 this.totalWords = document.getElementById('totalWords');
                 this.currentPosition = document.getElementById('currentPosition');
+                this.progressPercent = document.getElementById('progressPercent');
                 this.resetButton = document.getElementById('resetButton');
                 this.startButton = document.getElementById('startButton');
                 this.newPassageButton = document.getElementById('newPassageButton');
                 this.pauseButton = document.getElementById('pauseButton');
+                this.focusTypingBtn = document.getElementById('focusTypingBtn');
                 this.resultsContainer = document.getElementById('resultsContainer');
                 this.resultGrossWPM = document.getElementById('resultGrossWPM');
                 this.resultNetWPM = document.getElementById('resultNetWPM');
@@ -908,80 +969,75 @@
                 this.isPaused = false;
                 this.totalTypedChars = 0;
                 this.correctChars = 0;
-                this.errorMap = new Map(); // Track errors by position
+                this.errorMap = new Map();
                 
-                // Sample passages database - 7 MINUTE PASSAGES (350 words ~ 1750 characters)
+                // Passages database - 7 MINUTE PASSAGES (~350 words each)
                 this.passages = [
-                    {
-                        id: 1,
-                        language: 'English',
-                        title: 'Digital Transformation in Modern Society',
-                        content: `Digital transformation has fundamentally changed how we live, work, and communicate. The shift from analog to digital technologies has created new opportunities while presenting unique challenges that require careful navigation in our increasingly connected world.
+                    `The rapid advancement of digital technology has fundamentally transformed how we communicate, work, and access information in contemporary society. This digital revolution, while offering unprecedented convenience and connectivity, also presents complex challenges that require thoughtful navigation and adaptation.
 
-The internet, once a novel technology, has become an essential utility for billions worldwide. It enables instant communication across continents, access to vast amounts of information, and new forms of commerce that operate without physical boundaries. This connectivity has reshaped social interactions, business models, and even political movements.
+Internet connectivity has evolved from a luxury to an essential utility, enabling instant communication across geographical boundaries and providing access to vast repositories of knowledge. This global network supports diverse applications ranging from e-commerce and remote education to telemedicine and digital governance, reshaping traditional systems and creating new opportunities.
 
-Artificial intelligence and machine learning represent the next frontier of digital evolution. These technologies can analyze complex data patterns, automate routine tasks, and provide insights that were previously impossible to obtain. However, they also raise important questions about privacy, job displacement, and ethical considerations that society must address.
+Artificial intelligence and machine learning represent significant milestones in technological progress, offering capabilities for data analysis, pattern recognition, and automation that were previously unimaginable. These technologies power recommendation systems, language translation tools, and predictive analytics while raising important questions about ethics, privacy, and the future of employment.
 
-Remote work, accelerated by recent global events, demonstrates how digital tools can maintain productivity outside traditional office environments. Video conferencing, cloud collaboration platforms, and digital project management tools have enabled distributed teams to work effectively across time zones and geographical locations.
+The shift toward remote work arrangements, accelerated by recent global developments, demonstrates the viability of distributed teams and virtual collaboration. Video conferencing platforms, cloud-based productivity tools, and digital project management systems have enabled organizations to maintain operations while offering employees greater flexibility in work arrangements.
 
-The environmental impact of digital technology represents a significant consideration. Data centers consume substantial energy, electronic waste continues to grow, and the constant upgrade cycle of devices contributes to resource depletion. Sustainable digital practices and responsible consumption are becoming increasingly important.
+Environmental sustainability considerations have gained prominence in discussions about technology's future. The energy consumption of data centers, electronic waste management, and the resource intensity of device manufacturing require innovative solutions and responsible consumption patterns to minimize ecological impacts.
 
-Digital literacy has evolved from a specialized skill to a fundamental requirement for participation in modern society. Understanding how to use technology effectively, evaluate online information critically, and protect personal data are essential competencies for navigating today's world. Educational systems worldwide are adapting to develop these skills from an early age.
+Digital literacy has become an essential skill set for effective participation in modern society. The ability to navigate online platforms, evaluate digital information critically, protect personal data, and utilize technology productively represents fundamental competencies that educational systems worldwide are increasingly prioritizing.
 
-The future of digital transformation will likely involve greater integration of virtual and physical realities, more sophisticated automation, and continued evolution of how we interact with technology. Balancing innovation with thoughtful consideration of social impacts will remain an ongoing challenge for individuals, organizations, and governments alike.`
-                    },
-                    {
-                        id: 2,
-                        language: 'English', 
-                        title: 'The Science of Learning and Memory',
-                        content: `Human learning and memory represent complex cognitive processes that enable us to acquire knowledge, develop skills, and navigate our environment effectively. Understanding these mechanisms provides valuable insights for education, personal development, and cognitive enhancement throughout our lives.
+The integration of virtual and augmented reality technologies offers immersive experiences with applications in education, training, entertainment, and design. These technologies create simulated environments that can enhance learning, facilitate remote collaboration, and provide innovative solutions to complex problems.
 
-Memory formation involves multiple brain regions working in concert. The hippocampus plays a crucial role in forming new memories, while various cortical areas store long-term information. This distributed system allows for efficient processing and retrieval of vast amounts of information accumulated over a lifetime.
+Cybersecurity concerns have grown alongside technological adoption, with protecting digital infrastructure and personal information becoming increasingly important. Robust security measures, user awareness, and ethical considerations in data handling are essential components of responsible technology use.
 
-Neuroplasticity, the brain's ability to reorganize itself by forming new neural connections, continues throughout adulthood. This capacity enables learning new skills, recovering from injuries, and adapting to changing circumstances. Regular mental challenges and novel experiences help maintain this plasticity as we age.
+The democratization of information through digital platforms has empowered individuals and communities while also challenging traditional media structures. Social media networks, blogging platforms, and content sharing sites have created new avenues for expression, organization, and information dissemination.
 
-Sleep plays an essential role in memory consolidation. During sleep, particularly during deep sleep and REM stages, the brain processes and organizes information acquired while awake. This consolidation strengthens neural connections and integrates new knowledge with existing memories, making sleep crucial for effective learning.
+Future technological developments will likely continue reshaping social, economic, and cultural landscapes. Emerging fields like quantum computing, biotechnology integration with digital systems, and advanced robotics promise further transformation while demanding careful consideration of their societal implications and ethical dimensions.`,
 
-Different learning styles, while often discussed, may be less important than previously believed. Research suggests that matching teaching methods to supposed learning styles doesn't necessarily improve outcomes. Instead, varied instructional approaches and regular retrieval practice tend to benefit all learners regardless of their preferred modalities.
+                    `Effective communication represents a fundamental human capacity that enables the exchange of ideas, information, and emotions across diverse contexts and cultures. This complex process involves not only verbal expression but also nonverbal cues, listening skills, and contextual understanding that collectively facilitate meaningful interaction.
 
-Spaced repetition represents one of the most effective learning techniques discovered. By reviewing information at gradually increasing intervals, this method takes advantage of the brain's forgetting curve to strengthen memories efficiently. Digital tools now make implementing spaced repetition easier than ever before.
+Language development begins in early childhood and continues throughout the lifespan, reflecting both biological predisposition and environmental influence. The acquisition of vocabulary, grammatical structures, and pragmatic skills enables increasingly sophisticated expression and comprehension, forming the foundation for cognitive development and social integration.
 
-Metacognition, or thinking about one's own thinking processes, enhances learning effectiveness. When learners monitor their understanding, identify gaps in knowledge, and adjust their strategies accordingly, they develop more durable and transferable knowledge. Teaching metacognitive skills has shown significant benefits across educational contexts.
+Written communication has evolved through various mediums from stone carvings and parchment to digital text, each format influencing how ideas are structured, preserved, and disseminated. The transition to digital writing has introduced new conventions while maintaining core principles of clarity, coherence, and audience consideration.
 
-Emotional states significantly influence learning and memory. Moderate stress can enhance focus and memory formation, while chronic stress typically impairs cognitive function. Creating positive learning environments that minimize unnecessary stress while maintaining appropriate challenge levels optimizes educational outcomes.
+Professional communication in organizational settings requires specific skills including formal report writing, presentation delivery, meeting facilitation, and digital correspondence. These competencies support coordination, decision-making, and relationship building within and between organizations across various sectors and industries.
 
-The relationship between physical activity and cognitive function continues to be explored. Regular exercise appears to support brain health through multiple mechanisms, including increased blood flow, reduced inflammation, and stimulation of neurogenesis. Incorporating movement into learning routines may provide cognitive benefits.
+Intercultural communication addresses the challenges and opportunities of exchanging messages across cultural boundaries. Understanding cultural variations in communication styles, nonverbal behaviors, and contextual expectations enhances effectiveness in global interactions and reduces misunderstandings in diverse settings.
 
-Technological tools offer new possibilities for enhancing learning experiences. Adaptive learning systems, virtual reality simulations, and collaborative online platforms create opportunities for personalized, engaging education. However, balancing screen time with offline activities remains important for overall cognitive health and development.`
-                    },
-                    {
-                        id: 3,
-                        language: 'English',
-                        title: 'Sustainable Development and Environmental Stewardship',
-                        content: `Sustainable development represents a crucial approach to meeting current human needs without compromising the ability of future generations to meet their own needs. This complex challenge requires balancing economic growth, social equity, and environmental protection across global, national, and local contexts.
+Nonverbal communication encompasses facial expressions, gestures, posture, eye contact, and vocal qualities that complement or sometimes contradict verbal messages. These cues provide additional layers of meaning and emotional context, often operating at subconscious levels while significantly influencing interpersonal dynamics.
 
-Climate change presents one of the most significant challenges to sustainable development. Rising global temperatures, changing weather patterns, and increasing frequency of extreme events threaten ecosystems, food security, and human settlements worldwide. Addressing these changes requires coordinated international action and significant technological innovation.
+Listening represents an active process involving attention, interpretation, and response that goes beyond merely hearing words. Effective listening requires concentration, empathy, and the suspension of judgment to fully comprehend messages and demonstrate respect for speakers.
 
-Renewable energy technologies have advanced dramatically in recent decades. Solar, wind, and geothermal power now compete economically with fossil fuels in many regions, while energy storage solutions continue to improve. This transition toward cleaner energy sources represents a critical component of sustainable development strategies.
+Digital communication tools including email, instant messaging, and video conferencing have created new channels for interaction with distinct conventions and expectations. These platforms offer efficiency and accessibility while sometimes lacking the richness of face-to-face communication and requiring adapted skills for optimal use.
 
-Circular economy principles aim to minimize waste and maximize resource efficiency. By designing products for durability, repairability, and recyclability, and by creating systems that recover materials at the end of products' useful lives, circular approaches reduce environmental impacts while creating economic opportunities.
+Persuasive communication involves crafting messages to influence attitudes, beliefs, or behaviors through logical argument, emotional appeal, and credibility establishment. This skill finds application in marketing, leadership, advocacy, and everyday situations where influencing outcomes is desirable.
 
-Sustainable agriculture addresses the dual challenges of feeding a growing global population while protecting natural resources. Techniques like precision farming, agroforestry, and regenerative practices can increase productivity while improving soil health, conserving water, and enhancing biodiversity.
+Communication barriers including language differences, cultural misunderstandings, emotional interference, and technological limitations can impede effective message exchange. Identifying and addressing these barriers through clarification, adaptation, and patience enhances communication effectiveness across various contexts.
 
-Urban sustainability focuses on creating cities that are livable, efficient, and resilient. Compact development, efficient public transportation, green building standards, and accessible green spaces contribute to urban environments that support both human well-being and ecological health.
+The future of communication will likely involve continued technological innovation, evolving social norms, and perhaps new forms of expression yet to be developed. Maintaining core principles of clarity, empathy, and ethical consideration while adapting to changing circumstances will remain essential for meaningful human connection.`,
 
-Corporate sustainability has evolved from a niche concern to a mainstream business consideration. Companies increasingly recognize that environmental and social responsibility can drive innovation, reduce risks, and create long-term value for shareholders and stakeholders alike.
+                    `Critical thinking represents a disciplined process of actively analyzing, evaluating, and synthesizing information to form reasoned judgments and make informed decisions. This cognitive skill set enables individuals to navigate complex information environments, solve problems effectively, and approach challenges with intellectual rigor and objectivity.
 
-Individual actions contribute significantly to collective sustainability efforts. Conscious consumption, energy conservation, sustainable transportation choices, and waste reduction represent ways that individuals can support broader environmental goals while often saving money and improving personal well-being.
+The foundation of critical thinking involves recognizing assumptions, both explicit and implicit, that underlie arguments, beliefs, and information presentations. Identifying these foundational elements allows for more thorough examination of their validity, relevance, and potential biases before accepting conclusions or making determinations.
 
-Education plays a fundamental role in advancing sustainable development. By fostering environmental literacy, critical thinking about complex systems, and problem-solving skills, education empowers individuals and communities to participate meaningfully in creating sustainable futures.
+Logical reasoning requires understanding different types of arguments including deductive, inductive, and abductive approaches, each with distinct structures and standards of evaluation. Recognizing logical fallacies, such as circular reasoning or false dilemmas, helps maintain intellectual integrity and avoid flawed conclusions.
 
-International cooperation remains essential for addressing transboundary environmental challenges. Climate agreements, biodiversity conventions, and sustainable development goals provide frameworks for coordinated action, though implementation often requires adapting global commitments to local contexts and capacities.
+Evidence evaluation involves assessing the quality, relevance, and sufficiency of information supporting claims or arguments. This process considers source credibility, methodological soundness, contextual factors, and potential limitations while weighing contradictory evidence appropriately.
 
-Technological innovation continues to provide tools for sustainability challenges. From advanced materials that reduce resource consumption to monitoring systems that track environmental conditions, technology offers potential solutions, though their development and deployment require careful consideration of unintended consequences.
+Problem-solving methodologies typically involve defining problems clearly, generating potential solutions, evaluating alternatives systematically, implementing chosen approaches, and assessing outcomes. This structured approach increases the likelihood of effective resolution while providing opportunities for learning and refinement.
 
-The concept of planetary boundaries identifies critical Earth system processes that, if pushed beyond certain limits, could lead to irreversible environmental changes. Respecting these boundaries while meeting human needs represents a fundamental challenge for sustainable development in the coming decades.`
-                    }
+Decision-making processes benefit from critical thinking through thorough consideration of options, consequences, priorities, and uncertainties. Balancing quantitative data with qualitative factors, short-term implications with long-term effects, and individual preferences with broader impacts leads to more robust and defensible choices.
+
+Metacognition, or thinking about one's own thinking, enhances critical thinking by encouraging self-awareness of cognitive processes, biases, and limitations. Regular reflection on reasoning approaches, assumptions made, and potential improvements develops more sophisticated thinking skills over time.
+
+Creative thinking complements critical thinking by generating novel ideas, perspectives, and solutions that may not emerge through purely analytical approaches. The integration of divergent and convergent thinking processes fosters innovation while maintaining evaluative rigor.
+
+Information literacy in digital environments requires skills for locating, evaluating, and using information effectively amid vast quantities of available data. Distinguishing credible sources from questionable ones, recognizing misinformation patterns, and verifying claims through multiple channels are essential contemporary competencies.
+
+Ethical considerations permeate critical thinking processes, requiring attention to fairness, honesty, intellectual humility, and respect for diverse perspectives. Acknowledging limitations in one's own knowledge, remaining open to reconsideration, and engaging respectfully with differing viewpoints strengthen reasoning quality.
+
+Educational approaches to developing critical thinking skills typically involve explicit instruction, modeling, practice with feedback, and real-world application across various disciplines. These methods help internalize thinking habits that transfer beyond academic settings into professional and personal contexts.
+
+The ongoing development of critical thinking represents a lifelong endeavor with personal, professional, and societal benefits. As information environments become increasingly complex and challenges more interconnected, these cognitive skills grow in importance for individual agency and collective wellbeing.`
                 ];
                 
                 // Initialize the application
@@ -1002,10 +1058,23 @@ The concept of planetary boundaries identifies critical Earth system processes t
                 this.typingInput.addEventListener('copy', (e) => e.preventDefault());
                 this.typingInput.addEventListener('cut', (e) => e.preventDefault());
                 
+                // Tab key to switch focus between passage and typing area
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Tab') {
+                        e.preventDefault();
+                        if (document.activeElement === this.typingInput) {
+                            this.passageDisplay.focus();
+                        } else {
+                            this.typingInput.focus();
+                        }
+                    }
+                });
+                
                 this.startButton.addEventListener('click', this.startPractice.bind(this));
                 this.resetButton.addEventListener('click', this.resetPractice.bind(this));
                 this.newPassageButton.addEventListener('click', () => this.loadRandomPassage());
                 this.pauseButton.addEventListener('click', this.togglePause.bind(this));
+                this.focusTypingBtn.addEventListener('click', () => this.typingInput.focus());
                 this.practiceAgainButton.addEventListener('click', this.resetPractice.bind(this));
                 this.newPracticeButton.addEventListener('click', () => {
                     this.loadRandomPassage();
@@ -1015,14 +1084,17 @@ The concept of planetary boundaries identifies critical Earth system processes t
                 // Set initial state
                 this.updateStatus();
                 this.updatePassageDisplay();
+                
+                // Auto-focus typing area
+                setTimeout(() => {
+                    this.typingInput.focus();
+                }, 500);
             }
             
             loadRandomPassage() {
-                // Select a random passage
+                // Select a random passage (every time new passage)
                 const randomIndex = Math.floor(Math.random() * this.passages.length);
-                const passage = this.passages[randomIndex];
-                
-                this.originalPassage = passage.content;
+                this.originalPassage = this.passages[randomIndex];
                 this.passageChars = this.originalPassage.split('');
                 
                 // Calculate words (approximate) - should be ~350 words
@@ -1032,6 +1104,7 @@ The concept of planetary boundaries identifies critical Earth system processes t
                 this.totalChars.textContent = this.originalPassage.length;
                 this.totalWords.textContent = words;
                 this.currentPosition.textContent = `0 / ${this.originalPassage.length}`;
+                this.progressPercent.textContent = '0%';
                 
                 // Reset typing state
                 this.currentPassageIndex = 0;
@@ -1065,11 +1138,11 @@ The concept of planetary boundaries identifies critical Earth system processes t
                     
                     // Handle special characters for display
                     if (charContent === ' ') {
-                        charContent = '&nbsp;';
+                        charContent = ' ';
                     } else if (charContent === '\n') {
-                        charContent = '<br>';
+                        charContent = '\n';
                     } else if (charContent === '\t') {
-                        charContent = '&nbsp;&nbsp;&nbsp;&nbsp;';
+                        charContent = '    ';
                     }
                     
                     if (i < this.currentPassageIndex) {
@@ -1084,10 +1157,32 @@ The concept of planetary boundaries identifies critical Earth system processes t
                         charClass = 'current';
                     }
                     
-                    displayHTML += `<span class="char ${charClass}">${charContent}</span>`;
+                    // Handle newlines specially
+                    if (charContent === '\n') {
+                        displayHTML += `<br><span class="char ${charClass}"> </span>`;
+                    } else {
+                        displayHTML += `<span class="char ${charClass}">${this.escapeHtml(charContent)}</span>`;
+                    }
                 }
                 
                 this.passageDisplay.innerHTML = displayHTML;
+                
+                // Scroll current character into view
+                const currentChar = this.passageDisplay.querySelector('.char.current');
+                if (currentChar) {
+                    currentChar.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                }
+            }
+            
+            escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
             }
             
             handleTyping(e) {
@@ -1125,8 +1220,7 @@ The concept of planetary boundaries identifies critical Earth system processes t
                     // Strict MSCEIA character comparison
                     let isCorrect = typedChar === expectedChar;
                     
-                    // Special handling for Enter key (already captured in keydown)
-                    // But we need to handle newlines from paste or other sources
+                    // Special handling for Enter key
                     if (typedChar === '\n' && expectedChar !== '\n') {
                         isCorrect = false;
                     }
@@ -1152,7 +1246,12 @@ The concept of planetary boundaries identifies critical Earth system processes t
                     
                     this.currentPassageIndex++;
                     
-                    // Check if passage is completed
+                    // Update progress percentage
+                    const progress = this.passageChars.length > 0 ? 
+                        Math.round((this.currentPassageIndex / this.passageChars.length) * 100) : 0;
+                    this.progressPercent.textContent = `${progress}%`;
+                    
+                    // Check if passage is completed or time is up
                     if (this.currentPassageIndex >= this.passageChars.length) {
                         this.completePractice();
                     }
@@ -1163,7 +1262,7 @@ The concept of planetary boundaries identifies critical Earth system processes t
             }
             
             handleKeyDown(e) {
-                // Prevent default for tab key to avoid leaving textarea
+                // Prevent default for tab key (handled separately)
                 if (e.key === 'Tab') {
                     e.preventDefault();
                     return;
@@ -1176,6 +1275,16 @@ The concept of planetary boundaries identifies critical Earth system processes t
                         
                         if (expectedChar !== '\n') {
                             e.preventDefault();
+                            // Add error for pressing Enter at wrong position
+                            setTimeout(() => {
+                                this.errors++;
+                                this.errorMap.set(this.currentPassageIndex, {
+                                    typed: '\n',
+                                    expected: expectedChar,
+                                    time: Date.now()
+                                });
+                                this.updateStatus();
+                            }, 0);
                             return;
                         }
                     }
@@ -1225,8 +1334,17 @@ The concept of planetary boundaries identifies critical Earth system processes t
                 const minutes = Math.floor(this.timeLeft / 60);
                 const seconds = this.timeLeft % 60;
                 
+                // Change color based on remaining time
+                let timeColor = 'var(--timer-green)';
+                if (this.timeLeft < 60) {
+                    timeColor = 'var(--timer-red)';
+                } else if (this.timeLeft < 180) {
+                    timeColor = 'var(--timer-yellow)';
+                }
+                
                 this.timeRemaining.textContent = 
                     `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                this.timeRemaining.style.color = timeColor;
             }
             
             resetTimer() {
@@ -1238,6 +1356,7 @@ The concept of planetary boundaries identifies critical Earth system processes t
                 this.startButton.style.display = 'flex';
                 this.pauseButton.style.display = 'none';
                 this.pauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                this.timeRemaining.style.color = 'var(--timer-green)';
             }
             
             togglePause() {
@@ -1348,6 +1467,7 @@ The concept of planetary boundaries identifies critical Earth system processes t
                 this.startButton.style.display = 'flex';
                 this.pauseButton.style.display = 'none';
                 this.pauseButton.innerHTML = '<i class="fas fa-pause"></i> Pause';
+                this.progressPercent.textContent = '0%';
                 
                 this.resultsContainer.classList.remove('active');
                 
