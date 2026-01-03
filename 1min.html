@@ -1,196 +1,1111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>1 Minute Typing Test | Typing Nova</title>
-  <meta name="description" content="Test your typing speed in 1 minute. Practice typing with accurate WPM, error, and accuracy calculation on Typing Nova." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Minute Typing Speed Test | Typing Nova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      padding: 0;
-      color: #111;
-    }
+        /* Variables - Professional Clean Theme */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --light-bg: #f8fafc;
+            --surface: #ffffff;
+            --card: #f1f5f9;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-hover: rgba(0, 0, 0, 0.1);
+            --correct-bg: rgba(16, 185, 129, 0.1);
+            --incorrect-bg: rgba(239, 68, 68, 0.1);
+            --current-bg: rgba(37, 99, 235, 0.1);
+            --timer-red: #dc2626;
+            --timer-green: #059669;
+        }
 
-    header {
-      background: #ffffff;
-      border-bottom: 1px solid #e5e7eb;
-      padding: 15px 30px;
-      font-size: 20px;
-      font-weight: bold;
-    }
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--light-bg);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 15px;
+        }
 
-    .container {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 8px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      font-size: 16px;
-    }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .passage {
-      background: #f3f4f6;
-      padding: 15px;
-      border-radius: 6px;
-      margin-bottom: 15px;
-      line-height: 1.6;
-      user-select: none;
-    }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            gap: 6px;
+        }
 
-    textarea {
-      width: 100%;
-      height: 140px;
-      font-size: 16px;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #d1d5db;
-      resize: none;
-      outline: none;
-    }
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
 
-    textarea:disabled {
-      background: #f9fafb;
-    }
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
 
-    .result {
-      margin-top: 20px;
-      display: none;
-      background: #f3f4f6;
-      padding: 15px;
-      border-radius: 6px;
-    }
+        .btn-secondary {
+            background-color: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
 
-    .result p {
-      margin: 6px 0;
-      font-size: 16px;
-    }
+        .btn-secondary:hover {
+            background-color: var(--card);
+            transform: translateY(-1px);
+        }
 
-    .btn {
-      margin-top: 15px;
-      padding: 10px 18px;
-      font-size: 15px;
-      background: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+        /* Header */
+        header {
+            padding: 15px 0;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
 
-    .btn:hover {
-      background: #1d4ed8;
-    }
-  </style>
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 30px 0;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Timer & Info Bar */
+        .info-bar {
+            background-color: var(--surface);
+            padding: 15px 0;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .info-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .timer {
+            color: var(--timer-green);
+            font-family: 'Courier New', monospace;
+        }
+
+        .error-count {
+            color: var(--error);
+        }
+
+        /* Typing Container */
+        .typing-container {
+            background-color: var(--surface);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Passage Display */
+        .passage-display {
+            background-color: var(--card);
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            font-size: 17px;
+            line-height: 1.7;
+            min-height: 120px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Character styling */
+        .char {
+            padding: 1px 0;
+            border-radius: 2px;
+            transition: all 0.1s;
+            position: relative;
+        }
+
+        .char.correct {
+            background-color: var(--correct-bg);
+            color: var(--success);
+        }
+
+        .char.incorrect {
+            background-color: var(--incorrect-bg);
+            color: var(--error);
+            text-decoration: line-through;
+        }
+
+        .char.current {
+            background-color: var(--current-bg);
+            border-bottom: 2px solid var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+
+        .char.current::after {
+            content: '|';
+            position: absolute;
+            right: -2px;
+            color: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { background-color: var(--current-bg); }
+            50% { background-color: rgba(37, 99, 235, 0.2); }
+            100% { background-color: var(--current-bg); }
+        }
+
+        /* Typing Input */
+        .typing-input-container {
+            margin-top: 20px;
+        }
+
+        .typing-input {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            background-color: var(--card);
+            color: var(--text);
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            resize: none;
+            font-size: 17px;
+            line-height: 1.7;
+            font-family: 'Inter', sans-serif;
+            transition: border-color 0.15s;
+        }
+
+        .typing-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .typing-input.disabled {
+            background-color: var(--surface);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .typing-input::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Instructions */
+        .instructions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--surface);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .instruction-item i {
+            font-size: 12px;
+        }
+
+        /* Start Button */
+        .start-section {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            background-color: var(--surface);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .results-container.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .results-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .results-header p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 20px 15px;
+            background-color: var(--card);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+
+        .result-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-wpm {
+            border-top: 3px solid var(--primary);
+        }
+
+        .result-errors {
+            border-top: 3px solid var(--error);
+        }
+
+        .result-accuracy {
+            border-top: 3px solid var(--success);
+        }
+
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--surface);
+            color: var(--text);
+            padding: 30px 0 20px;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            transition: color 0.15s;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            margin: 30px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            padding: 20px;
+            background-color: var(--surface);
+            border-radius: 6px;
+            border: 1px dashed var(--border);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .info-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .info-item {
+                width: 100%;
+            }
+            
+            .page-header h1 {
+                font-size: 24px;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 22px;
+            }
+            
+            .typing-container {
+                padding: 20px;
+            }
+            
+            .passage-display, .typing-input {
+                font-size: 16px;
+            }
+            
+            .info-value {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-keyboard"></i>
+                Typing<span>Nova</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="passage-typing.html">Passage Typing</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
 
-<header>Typing Nova</header>
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>1 Minute Typing Speed Test</h1>
+                <p>Test your typing speed and accuracy. Type the passage below as quickly and accurately as possible.</p>
+            </div>
 
-<div class="container">
-  <div class="top-bar">
-    <div>⏱ Time: <span id="time">60</span>s</div>
-    <div>Errors: <span id="errors">0</span></div>
-  </div>
+            <!-- Timer & Info Bar -->
+            <div class="info-bar">
+                <div class="container info-content">
+                    <div class="info-item">
+                        <div class="info-label">Time Remaining</div>
+                        <div class="info-value timer" id="timeRemaining">01:00</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">Errors</div>
+                        <div class="info-value error-count" id="errorCount">0</div>
+                    </div>
+                </div>
+            </div>
 
-  <div class="passage" id="passage">
-    The quick brown fox jumps over the lazy dog. Typing regularly helps improve speed and accuracy. Focus on typing each character carefully without looking at the keyboard.
-  </div>
+            <!-- Typing Container -->
+            <div class="typing-container">
+                <!-- Passage Display -->
+                <div class="section-title">
+                    <i class="fas fa-align-left"></i>
+                    Type This Passage
+                </div>
+                <div class="passage-display" id="passageDisplay">
+                    Loading passage...
+                </div>
 
-  <textarea id="typingArea" placeholder="Start typing here..."></textarea>
+                <!-- Typing Input -->
+                <div class="section-title">
+                    <i class="fas fa-keyboard"></i>
+                    Your Typing
+                </div>
+                <div class="typing-input-container">
+                    <textarea 
+                        class="typing-input" 
+                        id="typingInput" 
+                        placeholder="Start typing the passage above. The 1-minute timer will begin with your first keystroke."
+                        spellcheck="false"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                    ></textarea>
+                </div>
+            </div>
 
-  <button class="btn" onclick="resetTest()">Reset Test</button>
+            <!-- Instructions -->
+            <div class="instructions">
+                <div class="instruction-item">
+                    <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                    <span>Timer starts with first keystroke</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-exclamation-triangle" style="color: var(--error);"></i>
+                    <span>Errors counted even if corrected</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-clock" style="color: var(--success);"></i>
+                    <span>Exactly 1 minute test</span>
+                </div>
+            </div>
 
-  <div class="result" id="result">
-    <p><strong>Time:</strong> 1 Minute</p>
-    <p><strong>Gross WPM:</strong> <span id="grossWpm"></span></p>
-    <p><strong>Errors:</strong> <span id="finalErrors"></span></p>
-    <p><strong>Accuracy:</strong> <span id="accuracy"></span>%</p>
-  </div>
-</div>
+            <!-- Start Button Section -->
+            <div class="start-section">
+                <button class="btn btn-primary" id="startTestBtn">
+                    <i class="fas fa-play"></i>
+                    Start 1-Minute Test
+                </button>
+                <button class="btn btn-secondary" id="newPassageBtn" style="margin-left: 10px;">
+                    <i class="fas fa-sync-alt"></i>
+                    New Passage
+                </button>
+            </div>
 
-<script>
-  const passageText = document.getElementById("passage").innerText;
-  const typingArea = document.getElementById("typingArea");
+            <!-- Results Section -->
+            <div class="results-container" id="resultsContainer">
+                <div class="results-header">
+                    <h2>Typing Test Results</h2>
+                    <p>Your 1-minute typing speed test results</p>
+                </div>
+                <div class="results-grid">
+                    <div class="result-card result-wpm">
+                        <div class="result-value" id="resultWPM">0</div>
+                        <div class="result-label">Words Per Minute</div>
+                    </div>
+                    <div class="result-card result-errors">
+                        <div class="result-value" id="resultErrors">0</div>
+                        <div class="result-label">Total Errors</div>
+                    </div>
+                    <div class="result-card result-accuracy">
+                        <div class="result-value" id="resultAccuracy">100%</div>
+                        <div class="result-label">Accuracy</div>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button class="btn btn-primary" id="tryAgainBtn">
+                        <i class="fas fa-redo"></i>
+                        Try Again
+                    </button>
+                    <button class="btn btn-secondary" id="newTestBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        New Test
+                    </button>
+                </div>
+            </div>
 
-  let timeLeft = 60;
-  let timerStarted = false;
-  let timer;
-  let errors = 0;
+            <!-- Ad Container (Only shows after results) -->
+            <div class="ad-container" id="adContainer" style="display: none;">
+                <p>Advertisement Area</p>
+                <p style="margin-top: 8px; font-size: 12px; color: var(--text-muted);">
+                    This area is designed for AdSense ads. It appears only after completing a typing test.
+                </p>
+            </div>
+        </div>
+    </main>
 
-  typingArea.addEventListener("paste", e => e.preventDefault());
-  typingArea.addEventListener("copy", e => e.preventDefault());
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-keyboard"></i>
+                    Typing<span>Nova</span>
+                </div>
+                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 15px;">
+                    Practice typing and improve your speed and accuracy
+                </p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="speed-test.html">Speed Test</a>
+                    <a href="passage-typing.html">Passage Typing</a>
+                    <a href="about.html">About</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © <span id="currentYear"></span> Typing Nova – All rights reserved
+            </div>
+        </div>
+    </footer>
 
-  typingArea.addEventListener("input", () => {
-    if (!timerStarted) {
-      timerStarted = true;
-      timer = setInterval(updateTimer, 1000);
-    }
+    <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-    calculateErrors();
-  });
+    <script>
+        // 1-Minute Typing Speed Test Application
+        class OneMinuteTypingTest {
+            constructor() {
+                // DOM Elements
+                this.passageDisplay = document.getElementById('passageDisplay');
+                this.typingInput = document.getElementById('typingInput');
+                this.timeRemaining = document.getElementById('timeRemaining');
+                this.errorCount = document.getElementById('errorCount');
+                this.startTestBtn = document.getElementById('startTestBtn');
+                this.newPassageBtn = document.getElementById('newPassageBtn');
+                this.resultsContainer = document.getElementById('resultsContainer');
+                this.resultWPM = document.getElementById('resultWPM');
+                this.resultErrors = document.getElementById('resultErrors');
+                this.resultAccuracy = document.getElementById('resultAccuracy');
+                this.tryAgainBtn = document.getElementById('tryAgainBtn');
+                this.newTestBtn = document.getElementById('newTestBtn');
+                this.adContainer = document.getElementById('adContainer');
+                
+                // State variables
+                this.originalPassage = '';
+                this.passageChars = [];
+                this.currentPassageIndex = 0;
+                this.errors = 0;
+                this.startTime = null;
+                this.timerInterval = null;
+                this.totalTime = 60; // 1 minute in seconds
+                this.timeLeft = this.totalTime;
+                this.isRunning = false;
+                this.isCompleted = false;
+                this.totalTypedChars = 0;
+                this.errorMap = new Map();
+                
+                // Passages database - Short passages for 1 minute test
+                this.passages = [
+                    "The quick brown fox jumps over the lazy dog. This sentence contains all letters of the alphabet and is commonly used for typing practice. Regular typing practice can significantly improve your speed and accuracy over time.",
+                    
+                    "Programming is the process of creating instructions for computers using programming languages. Developers write code to build applications, websites, and software that solve problems and provide valuable services to users worldwide.",
+                    
+                    "Reading regularly expands vocabulary and improves comprehension skills. Books transport readers to different worlds while teaching valuable lessons about life, history, and human nature through engaging stories and characters.",
+                    
+                    "Technology continues to transform how we work, communicate, and access information. Digital tools enable remote collaboration, instant communication, and efficient problem solving across various industries and disciplines.",
+                    
+                    "Physical exercise benefits both mental and physical health. Regular activity improves cardiovascular function, strengthens muscles, reduces stress, and contributes to overall wellbeing and quality of life.",
+                    
+                    "Learning new skills requires patience, practice, and persistence. Whether mastering a musical instrument, language, or technical skill, consistent effort over time leads to measurable improvement and personal growth.",
+                    
+                    "Effective communication involves clear expression, active listening, and appropriate response. These skills enhance personal relationships, professional collaborations, and mutual understanding in diverse situations.",
+                    
+                    "Time management techniques help prioritize tasks and maximize productivity. Setting clear goals, minimizing distractions, and maintaining focus contribute to efficient work completion and reduced stress levels.",
+                    
+                    "Healthy eating habits provide essential nutrients for bodily functions. Balanced diets including fruits, vegetables, proteins, and whole grains support energy levels, immune function, and long-term health maintenance.",
+                    
+                    "Creative thinking generates innovative solutions to complex problems. Combining knowledge from different fields often produces unique approaches that traditional methods might overlook or consider impractical."
+                ];
+                
+                // Initialize the application
+                this.init();
+            }
+            
+            init() {
+                // Set current year in footer
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+                
+                // Load initial passage
+                this.loadRandomPassage();
+                
+                // Event listeners
+                this.typingInput.addEventListener('input', this.handleTyping.bind(this));
+                this.typingInput.addEventListener('keydown', this.handleKeyDown.bind(this));
+                this.typingInput.addEventListener('paste', (e) => e.preventDefault());
+                this.typingInput.addEventListener('copy', (e) => e.preventDefault());
+                this.typingInput.addEventListener('cut', (e) => e.preventDefault());
+                
+                this.startTestBtn.addEventListener('click', () => {
+                    this.typingInput.focus();
+                    this.startTestBtn.disabled = true;
+                    this.startTestBtn.innerHTML = '<i class="fas fa-play"></i> Test Started';
+                    this.startTestBtn.style.opacity = '0.7';
+                });
+                
+                this.newPassageBtn.addEventListener('click', () => this.loadRandomPassage());
+                this.tryAgainBtn.addEventListener('click', this.resetTest.bind(this));
+                this.newTestBtn.addEventListener('click', () => {
+                    this.loadRandomPassage();
+                    this.resetTest();
+                });
+                
+                // Set initial state
+                this.updatePassageDisplay();
+            }
+            
+            loadRandomPassage() {
+                // Select a random passage
+                const randomIndex = Math.floor(Math.random() * this.passages.length);
+                this.originalPassage = this.passages[randomIndex];
+                this.passageChars = this.originalPassage.split('');
+                
+                // Reset typing state
+                this.currentPassageIndex = 0;
+                this.errors = 0;
+                this.totalTypedChars = 0;
+                this.errorMap.clear();
+                
+                // Reset UI
+                this.typingInput.value = '';
+                this.typingInput.disabled = false;
+                this.typingInput.classList.remove('disabled');
+                this.typingInput.focus();
+                
+                this.startTestBtn.disabled = false;
+                this.startTestBtn.innerHTML = '<i class="fas fa-play"></i> Start 1-Minute Test';
+                this.startTestBtn.style.opacity = '1';
+                
+                // Hide results and ads
+                this.resultsContainer.classList.remove('active');
+                this.adContainer.style.display = 'none';
+                
+                // Reset timer display
+                this.timeRemaining.textContent = '01:00';
+                this.timeRemaining.style.color = 'var(--timer-green)';
+                this.errorCount.textContent = '0';
+                
+                // Reset timer state
+                clearInterval(this.timerInterval);
+                this.isRunning = false;
+                this.isCompleted = false;
+                this.timeLeft = this.totalTime;
+                
+                this.updatePassageDisplay();
+            }
+            
+            updatePassageDisplay() {
+                let displayHTML = '';
+                
+                for (let i = 0; i < this.passageChars.length; i++) {
+                    let charClass = '';
+                    let charContent = this.passageChars[i];
+                    
+                    // Handle special characters for display
+                    if (charContent === ' ') {
+                        charContent = ' ';
+                    } else if (charContent === '\n') {
+                        charContent = '\n';
+                    }
+                    
+                    if (i < this.currentPassageIndex) {
+                        // Already typed characters
+                        if (this.errorMap.has(i)) {
+                            charClass = 'incorrect';
+                        } else {
+                            charClass = 'correct';
+                        }
+                    } else if (i === this.currentPassageIndex) {
+                        // Current character
+                        charClass = 'current';
+                    }
+                    
+                    // Handle newlines specially
+                    if (charContent === '\n') {
+                        displayHTML += `<br><span class="char ${charClass}"> </span>`;
+                    } else {
+                        displayHTML += `<span class="char ${charClass}">${this.escapeHtml(charContent)}</span>`;
+                    }
+                }
+                
+                this.passageDisplay.innerHTML = displayHTML;
+                
+                // Scroll current character into view if needed
+                const currentChar = this.passageDisplay.querySelector('.char.current');
+                if (currentChar) {
+                    currentChar.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                }
+            }
+            
+            escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
+            
+            handleTyping(e) {
+                if (this.isCompleted) return;
+                
+                const input = this.typingInput.value;
+                const inputLength = input.length;
+                
+                // Start timer on first keystroke
+                if (!this.isRunning && inputLength > 0) {
+                    this.startTimer();
+                }
+                
+                // Check if user is trying to type beyond current position
+                if (inputLength > this.currentPassageIndex + 1) {
+                    // User is trying to type ahead - revert to correct position
+                    this.typingInput.value = input.substring(0, this.currentPassageIndex);
+                    return;
+                }
+                
+                // Handle backspace
+                if (inputLength < this.currentPassageIndex) {
+                    // User pressed backspace - move cursor back
+                    this.currentPassageIndex = inputLength;
+                    this.updatePassageDisplay();
+                    return;
+                }
+                
+                // Handle new character
+                if (inputLength === this.currentPassageIndex + 1) {
+                    const typedChar = input[this.currentPassageIndex];
+                    const expectedChar = this.passageChars[this.currentPassageIndex];
+                    
+                    // Strict character comparison
+                    let isCorrect = typedChar === expectedChar;
+                    
+                    // Update counts
+                    this.totalTypedChars++;
+                    
+                    if (isCorrect) {
+                        // Remove error if previously marked at this position
+                        if (this.errorMap.has(this.currentPassageIndex)) {
+                            this.errorMap.delete(this.currentPassageIndex);
+                        }
+                    } else {
+                        this.errors++;
+                        // Mark this position as having an error
+                        this.errorMap.set(this.currentPassageIndex, {
+                            typed: typedChar,
+                            expected: expectedChar
+                        });
+                    }
+                    
+                    this.currentPassageIndex++;
+                    this.updatePassageDisplay();
+                    
+                    // Update error count display
+                    this.errorCount.textContent = this.errors;
+                }
+            }
+            
+            handleKeyDown(e) {
+                // Prevent default for tab key to avoid leaving textarea
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    return;
+                }
+                
+                // Allow backspace, delete, arrow keys, etc.
+                const allowedKeys = [
+                    'Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 
+                    'ArrowUp', 'ArrowDown', 'Home', 'End'
+                ];
+                
+                if (allowedKeys.includes(e.key)) {
+                    return;
+                }
+                
+                // Prevent typing if test is completed
+                if (this.isCompleted) {
+                    e.preventDefault();
+                    return;
+                }
+            }
+            
+            startTimer() {
+                if (this.isRunning) return;
+                
+                this.isRunning = true;
+                this.startTime = Date.now();
+                
+                this.timerInterval = setInterval(() => {
+                    this.timeLeft--;
+                    
+                    // Update timer display
+                    const seconds = this.timeLeft;
+                    this.timeRemaining.textContent = 
+                        `00:${seconds.toString().padStart(2, '0')}`;
+                    
+                    // Change color when time is running low
+                    if (this.timeLeft <= 10) {
+                        this.timeRemaining.style.color = 'var(--timer-red)';
+                    } else if (this.timeLeft <= 30) {
+                        this.timeRemaining.style.color = 'var(--warning)';
+                    }
+                    
+                    // End test when time is up
+                    if (this.timeLeft <= 0) {
+                        this.timeLeft = 0;
+                        this.timeRemaining.textContent = '00:00';
+                        this.completeTest();
+                    }
+                }, 1000);
+            }
+            
+            completeTest() {
+                clearInterval(this.timerInterval);
+                this.isRunning = false;
+                this.isCompleted = true;
+                
+                // Disable typing input
+                this.typingInput.disabled = true;
+                this.typingInput.classList.add('disabled');
+                
+                // Calculate results
+                const elapsedMinutes = 1; // Exactly 1 minute
+                
+                // Calculate WPM (1 word = 5 characters)
+                const wpm = (this.totalTypedChars / 5) / elapsedMinutes;
+                
+                // Calculate Accuracy
+                const accuracy = this.totalTypedChars > 0 ? 
+                    ((this.totalTypedChars - this.errors) / this.totalTypedChars) * 100 : 0;
+                
+                // Update results display
+                this.resultWPM.textContent = Math.round(wpm);
+                this.resultErrors.textContent = this.errors;
+                this.resultAccuracy.textContent = `${Math.min(100, Math.round(accuracy))}%`;
+                
+                // Show results section
+                this.resultsContainer.classList.add('active');
+                
+                // Show ad container
+                this.adContainer.style.display = 'block';
+                
+                // Scroll to results
+                setTimeout(() => {
+                    this.resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+            
+            resetTest() {
+                // Reset all state
+                clearInterval(this.timerInterval);
+                
+                this.currentPassageIndex = 0;
+                this.errors = 0;
+                this.totalTypedChars = 0;
+                this.errorMap.clear();
+                this.isRunning = false;
+                this.isCompleted = false;
+                this.timeLeft = this.totalTime;
+                
+                // Reset UI
+                this.typingInput.value = '';
+                this.typingInput.disabled = false;
+                this.typingInput.classList.remove('disabled');
+                this.typingInput.focus();
+                
+                this.startTestBtn.disabled = false;
+                this.startTestBtn.innerHTML = '<i class="fas fa-play"></i> Start 1-Minute Test';
+                this.startTestBtn.style.opacity = '1';
+                
+                this.timeRemaining.textContent = '01:00';
+                this.timeRemaining.style.color = 'var(--timer-green)';
+                this.errorCount.textContent = '0';
+                
+                this.resultsContainer.classList.remove('active');
+                this.adContainer.style.display = 'none';
+                
+                this.updatePassageDisplay();
+            }
+        }
 
-  function updateTimer() {
-    timeLeft--;
-    document.getElementById("time").innerText = timeLeft;
-
-    if (timeLeft <= 0) {
-      clearInterval(timer);
-      typingArea.disabled = true;
-      showResult();
-    }
-  }
-
-  function calculateErrors() {
-    const typed = typingArea.value;
-    errors = 0;
-
-    for (let i = 0; i < typed.length; i++) {
-      if (typed[i] !== passageText[i]) {
-        errors++;
-      }
-    }
-
-    document.getElementById("errors").innerText = errors;
-  }
-
-  function showResult() {
-    const typedChars = typingArea.value.length;
-    const grossWpm = Math.round((typedChars / 5) / 1);
-    const accuracy = typedChars > 0
-      ? Math.round(((typedChars - errors) / typedChars) * 100)
-      : 0;
-
-    document.getElementById("grossWpm").innerText = grossWpm < 0 ? 0 : grossWpm;
-    document.getElementById("finalErrors").innerText = errors;
-    document.getElementById("accuracy").innerText = accuracy < 0 ? 0 : accuracy;
-
-    document.getElementById("result").style.display = "block";
-  }
-
-  function resetTest() {
-    clearInterval(timer);
-    timeLeft = 60;
-    errors = 0;
-    timerStarted = false;
-
-    document.getElementById("time").innerText = 60;
-    document.getElementById("errors").innerText = 0;
-    typingArea.value = "";
-    typingArea.disabled = false;
-    document.getElementById("result").style.display = "none";
-    typingArea.focus();
-  }
-</script>
-
+        // Initialize the application when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const typingTest = new OneMinuteTypingTest();
+            window.typingTest = typingTest;
+        });
+    </script>
 </body>
 </html>
