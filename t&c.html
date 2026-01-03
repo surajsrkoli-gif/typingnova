@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | Typing Nova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables - Professional Clean Theme */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #3b82f6;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --light-bg: #f8fafc;
+            --surface: #ffffff;
+            --border: #e2e8f0;
+            --shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 16px;
+        }
+
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .page-header h1 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 17px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Terms Content */
+        .terms-content {
+            background-color: var(--surface);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        /* Section Styling */
+        .terms-section {
+            margin-bottom: 35px;
+        }
+
+        .terms-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .section-content {
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .section-content p {
+            margin-bottom: 16px;
+        }
+
+        .section-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .section-content li {
+            margin-bottom: 8px;
+        }
+
+        /* Highlight Box */
+        .notice-box {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .notice-box p {
+            margin-bottom: 0;
+            color: var(--text);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--surface);
+            color: var(--text);
+            padding: 30px 0 20px;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+
+        /* Last Updated */
+        .last-updated {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .page-header h1 {
+                font-size: 28px;
+            }
+            
+            .terms-content {
+                padding: 30px 20px;
+            }
+            
+            .terms-section {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header h1 {
+                font-size: 24px;
+            }
+            
+            .page-header p {
+                font-size: 16px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+            
+            .section-content {
+                font-size: 15px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-keyboard"></i>
+                Typing<span>Nova</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="speed-test.html">Speed Test</a>
+                <a href="passage-typing.html">Passage Typing</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Terms and Conditions</h1>
+                <p>These Terms and Conditions govern your use of Typing Nova, a typing practice and skill improvement website.</p>
+            </div>
+
+            <!-- Terms Content -->
+            <div class="terms-content">
+                <!-- Introduction -->
+                <section class="terms-section">
+                    <h2 class="section-title">1. Introduction</h2>
+                    <div class="section-content">
+                        <p>Welcome to Typing Nova. These Terms and Conditions ("Terms") outline the rules and regulations for using our website located at typingnova.com.</p>
+                        <p>By accessing and using Typing Nova, you accept and agree to be bound by these Terms. If you disagree with any part of these Terms, you should not use our website. We reserve the right to update or modify these Terms at any time without prior notice.</p>
+                    </div>
+                </section>
+
+                <!-- Use of Website -->
+                <section class="terms-section">
+                    <h2 class="section-title">2. Use of the Website</h2>
+                    <div class="section-content">
+                        <p>Typing Nova is designed to provide typing practice tools, including speed tests (1, 3, and 5 minutes) and passage typing exercises. The website is intended for personal use to improve typing skills and speed.</p>
+                        
+                        <p>You agree to use Typing Nova only for lawful purposes and in a way that does not infringe the rights of others or restrict or inhibit anyone else's use of the website. Specifically, you agree not to:</p>
+                        
+                        <ul>
+                            <li>Use the website for any illegal or unauthorized purpose</li>
+                            <li>Attempt to gain unauthorized access to any part of the website, its systems, or networks</li>
+                            <li>Interfere with or disrupt the website or servers connected to the website</li>
+                            <li>Use any automated system, including robots or spiders, to access the website</li>
+                            <li>Upload or transmit viruses or any other malicious code that could affect the functionality of the website</li>
+                            <li>Use the website in any manner that could damage, disable, overburden, or impair our servers or networks</li>
+                        </ul>
+                        
+                        <p>You are responsible for ensuring that your use of Typing Nova complies with all applicable laws and regulations in your jurisdiction.</p>
+                    </div>
+                </section>
+
+                <!-- Service Description -->
+                <section class="terms-section">
+                    <h2 class="section-title">3. Typing Practice Services</h2>
+                    <div class="section-content">
+                        <p>Typing Nova offers several typing practice services:</p>
+                        
+                        <ul>
+                            <li><strong>Speed Tests:</strong> Timed typing tests of 1, 3, or 5 minutes to measure typing speed and accuracy</li>
+                            <li><strong>Passage Typing:</strong> Extended practice with full passages to improve typing consistency</li>
+                            <li><strong>Typing Practice:</strong> Various exercises designed to help users improve their typing skills</li>
+                        </ul>
+                        
+                        <div class="notice-box">
+                            <p><strong>Important:</strong> All typing tests and practice exercises on Typing Nova are for personal skill improvement only. They are not affiliated with, endorsed by, or connected to any official testing organization, educational institution, or certification program.</p>
+                        </div>
+                        
+                        <p>We strive to provide accurate and reliable typing practice tools, but we make no guarantees about specific improvements in typing speed or accuracy. Results may vary based on individual practice, dedication, and natural ability.</p>
+                    </div>
+                </section>
+
+                <!-- Intellectual Property -->
+                <section class="terms-section">
+                    <h2 class="section-title">4. Intellectual Property Rights</h2>
+                    <div class="section-content">
+                        <p>All content, features, and functionality available on Typing Nova, including but not limited to text, graphics, logos, icons, images, audio clips, software, and website design, are the exclusive property of Typing Nova or its licensors and are protected by international copyright, trademark, and other intellectual property laws.</p>
+                        
+                        <p>You may not:</p>
+                        
+                        <ul>
+                            <li>Copy, reproduce, distribute, or create derivative works from any content on Typing Nova without explicit permission</li>
+                            <li>Use any trademarks, logos, or proprietary graphics without our written consent</li>
+                            <li>Reverse engineer, decompile, or disassemble any software or code used on the website</li>
+                            <li>Remove any copyright or proprietary notices from any content</li>
+                        </ul>
+                        
+                        <p>You may use Typing Nova for personal, non-commercial purposes only. Any commercial use of the website or its content requires prior written permission from Typing Nova.</p>
+                    </div>
+                </section>
+
+                <!-- User Content -->
+                <section class="terms-section">
+                    <h2 class="section-title">5. User Content and Data</h2>
+                    <div class="section-content">
+                        <p>When using Typing Nova, you may generate typing test results and practice data. This information is primarily stored locally in your browser and is not transmitted to or stored on our servers.</p>
+                        
+                        <p>If you choose to contact us through our contact form or email, you may provide personal information such as your name and email address. We handle this information in accordance with our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+                        
+                        <p>You retain ownership of any content you create while using Typing Nova. By using our services, you grant us a non-exclusive, royalty-free license to use aggregated, anonymized data for the purpose of improving our services and analyzing usage patterns.</p>
+                    </div>
+                </section>
+
+                <!-- Limitations of Liability -->
+                <section class="terms-section">
+                    <h2 class="section-title">6. Limitation of Liability</h2>
+                    <div class="section-content">
+                        <p>Typing Nova is provided on an "as is" and "as available" basis. We make no representations or warranties of any kind, express or implied, regarding the operation of our website or the information, content, or materials included on it.</p>
+                        
+                        <p>To the fullest extent permitted by applicable law, Typing Nova, its owners, employees, and affiliates shall not be liable for:</p>
+                        
+                        <ul>
+                            <li>Any direct, indirect, incidental, special, consequential, or punitive damages arising from your use of the website</li>
+                            <li>Any errors, mistakes, or inaccuracies in content</li>
+                            <li>Any interruptions or cessation of service</li>
+                            <li>Any bugs, viruses, or other harmful code that may be transmitted through the website</li>
+                            <li>Any loss or damage of any kind incurred as a result of using our typing practice services</li>
+                        </ul>
+                        
+                        <div class="notice-box">
+                            <p><strong>Important Disclaimer:</strong> Typing Nova is a practice tool for improving typing skills. We do not guarantee specific results, and your typing improvement depends on your individual practice and dedication. Use of our website is at your own risk.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Third-Party Links -->
+                <section class="terms-section">
+                    <h2 class="section-title">7. Third-Party Links and Advertising</h2>
+                    <div class="section-content">
+                        <p>Typing Nova may contain links to third-party websites or services that are not owned or controlled by us. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party websites or services.</p>
+                        
+                        <p>We use Google AdSense to display advertisements on our website. These third-party advertisers may use cookies and web beacons to collect information about your visits to Typing Nova and other websites to provide targeted advertisements. You can opt out of personalized advertising through Google's Ads Settings or by visiting the Network Advertising Initiative opt-out page.</p>
+                        
+                        <p>You acknowledge and agree that Typing Nova shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such third-party websites or services.</p>
+                    </div>
+                </section>
+
+                <!-- Termination -->
+                <section class="terms-section">
+                    <h2 class="section-title">8. Termination of Access</h2>
+                    <div class="section-content">
+                        <p>We may terminate or suspend your access to Typing Nova immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms.</p>
+                        
+                        <p>Upon termination, your right to use the website will cease immediately. If you wish to terminate your relationship with Typing Nova, you may simply discontinue using our website.</p>
+                        
+                        <p>All provisions of these Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+                    </div>
+                </section>
+
+                <!-- Changes to Terms -->
+                <section class="terms-section">
+                    <h2 class="section-title">9. Changes to These Terms</h2>
+                    <div class="section-content">
+                        <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                        
+                        <p>By continuing to access or use Typing Nova after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you must stop using the website.</p>
+                        
+                        <p>We encourage you to review these Terms periodically for any changes. The date of the last update will be indicated at the bottom of this page.</p>
+                    </div>
+                </section>
+
+                <!-- Governing Law -->
+                <section class="terms-section">
+                    <h2 class="section-title">10. Governing Law</h2>
+                    <div class="section-content">
+                        <p>These Terms shall be governed and construed in accordance with the laws applicable in the jurisdiction where Typing Nova operates, without regard to its conflict of law provisions.</p>
+                        
+                        <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect.</p>
+                        
+                        <p>These Terms constitute the entire agreement between us regarding our service, and supersede and replace any prior agreements we might have had between us regarding the service.</p>
+                    </div>
+                </section>
+
+                <!-- Contact Information -->
+                <section class="terms-section">
+                    <h2 class="section-title">11. Contact Information</h2>
+                    <div class="section-content">
+                        <p>If you have any questions about these Terms and Conditions, please contact us:</p>
+                        
+                        <ul>
+                            <li><strong>Website:</strong> <a href="contact.html">Contact Form</a></li>
+                            <li><strong>Email:</strong> terms@typingnova.com</li>
+                        </ul>
+                        
+                        <p>We will make reasonable efforts to respond to your inquiries in a timely manner.</p>
+                    </div>
+                </section>
+
+                <!-- Last Updated -->
+                <div class="last-updated">
+                    <p><strong>Last Updated:</strong> April 10, 2024</p>
+                    <p>These Terms and Conditions are effective as of the date listed above.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-keyboard"></i>
+                    Typing<span>Nova</span>
+                </div>
+                <p style="color: var(--text-light); font-size: 15px; margin-bottom: 15px;">
+                    Practice typing and improve your speed and accuracy
+                </p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="1-minute-test.html">1 Minute Test</a>
+                    <a href="3-minute-test.html">3 Minute Test</a>
+                    <a href="5-minute-test.html">5 Minute Test</a>
+                    <a href="passage-typing.html">Passage Typing</a>
+                    <a href="about.html">About</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-and-conditions.html">Terms & Conditions</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2024 Typing Nova – All rights reserved
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
