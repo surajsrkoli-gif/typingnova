@@ -1,0 +1,1025 @@
+Here is the HTML code for a Marathi typing practice page, designed as a 1-minute speed test similar to your existing English version.
+```html
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 मिनिट मराठी टायपिंग स्पीड चाचणी | Typing Nova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables - Professional Clean Theme with Marathi accent */
+        :root {
+            --primary: #e67e22;
+            --primary-dark: #d35400;
+            --secondary: #f39c12;
+            --success: #10b981;
+            --error: #ef4444;
+            --warning: #f59e0b;
+            --light-bg: #fef9e8;
+            --surface: #ffffff;
+            --card: #fff3e0;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --text-muted: #94a3b8;
+            --border: #ffe0b5;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --shadow-hover: rgba(0, 0, 0, 0.1);
+            --correct-bg: rgba(16, 185, 129, 0.1);
+            --incorrect-bg: rgba(239, 68, 68, 0.1);
+            --current-bg: rgba(230, 126, 34, 0.1);
+            --timer-red: #dc2626;
+            --timer-green: #059669;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Inter', 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light-bg);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-size: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--card);
+            transform: translateY(-1px);
+        }
+
+        /* Header */
+        header {
+            padding: 15px 0;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 30px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .marathi-badge {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background-color: var(--surface);
+            padding: 15px 0;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .info-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .info-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .info-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .info-value {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .timer {
+            color: var(--timer-green);
+            font-family: 'Courier New', monospace;
+        }
+
+        .error-count {
+            color: var(--error);
+        }
+
+        /* Typing Container */
+        .typing-container {
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Passage Display */
+        .passage-display {
+            background-color: var(--card);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid var(--border);
+            font-size: 18px;
+            line-height: 1.8;
+            min-height: 140px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Poppins', 'Inter', sans-serif;
+            letter-spacing: 0.3px;
+        }
+
+        /* Character styling */
+        .char {
+            padding: 1px 0;
+            border-radius: 3px;
+            transition: all 0.1s;
+            position: relative;
+        }
+
+        .char.correct {
+            background-color: var(--correct-bg);
+            color: var(--success);
+        }
+
+        .char.incorrect {
+            background-color: var(--incorrect-bg);
+            color: var(--error);
+            text-decoration: line-through;
+        }
+
+        .char.current {
+            background-color: var(--current-bg);
+            border-bottom: 2px solid var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+
+        .char.current::after {
+            content: '|';
+            position: absolute;
+            right: -2px;
+            color: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0% { background-color: var(--current-bg); }
+            50% { background-color: rgba(230, 126, 34, 0.2); }
+            100% { background-color: var(--current-bg); }
+        }
+
+        /* Typing Input */
+        .typing-input-container {
+            margin-top: 20px;
+        }
+
+        .typing-input {
+            width: 100%;
+            height: 130px;
+            padding: 15px;
+            background-color: var(--card);
+            color: var(--text);
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            resize: none;
+            font-size: 18px;
+            line-height: 1.7;
+            font-family: 'Poppins', 'Inter', monospace;
+            transition: border-color 0.15s;
+        }
+
+        .typing-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+        }
+
+        .typing-input.disabled {
+            background-color: var(--surface);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .typing-input::placeholder {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* Instructions */
+        .instructions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: var(--surface);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .instruction-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .instruction-item i {
+            font-size: 12px;
+        }
+
+        /* Start Section */
+        .start-section {
+            text-align: center;
+            margin: 25px 0;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* Results Section */
+        .results-container {
+            display: none;
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .results-container.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .results-header h2 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .results-header p {
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .result-card {
+            text-align: center;
+            padding: 20px 15px;
+            background-color: var(--card);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .result-value {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .result-wpm {
+            border-top: 3px solid var(--primary);
+        }
+
+        .result-errors {
+            border-top: 3px solid var(--error);
+        }
+
+        .result-accuracy {
+            border-top: 3px solid var(--success);
+        }
+
+        .results-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--surface);
+            color: var(--text);
+            padding: 30px 0 20px;
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 15px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            transition: color 0.15s;
+            font-size: 13px;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            margin: 30px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            padding: 20px;
+            background-color: var(--surface);
+            border-radius: 10px;
+            border: 1px dashed var(--border);
+        }
+
+        /* Language Note */
+        .language-note {
+            background: #fff3e0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 13px;
+            color: #e67e22;
+            border-left: 3px solid #e67e22;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                justify-content: center;
+            }
+            
+            .info-content {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .info-item {
+                width: 100%;
+            }
+            
+            .page-header h1 {
+                font-size: 24px;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .passage-display, .typing-input {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 22px;
+            }
+            
+            .typing-container {
+                padding: 20px;
+            }
+            
+            .passage-display, .typing-input {
+                font-size: 15px;
+            }
+            
+            .info-value {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-keyboard"></i>
+                Typing<span>Nova</span>
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="passage.html">Passage Typing</a>
+                <a href="1min.html">English Test</a>
+                <a href="hindi-typing.html">हिन्दी</a>
+                <a href="about.html">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>
+                    <i class="fas fa-language" style="color: #e67e22;"></i>
+                    १ मिनिट मराठी टायपिंग चाचणी
+                    <span class="marathi-badge">मराठी</span>
+                </h1>
+                <p>खालील मराठी परिच्छेद टाइप करा. तुमची टायपिंग गती आणि अचूकता तपासली जाईल.</p>
+            </div>
+
+            <div class="info-bar">
+                <div class="container info-content">
+                    <div class="info-item">
+                        <div class="info-label">उरलेला वेळ</div>
+                        <div class="info-value timer" id="timeRemaining">01:00</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">चुका (Errors)</div>
+                        <div class="info-value error-count" id="errorCount">0</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-container">
+                <div class="section-title">
+                    <i class="fas fa-align-left"></i>
+                    हा परिच्छेद टाइप करा
+                </div>
+                <div class="passage-display" id="passageDisplay">
+                    मराठी परिच्छेद लोड होत आहे...
+                </div>
+
+                <div class="section-title">
+                    <i class="fas fa-keyboard"></i>
+                    तुमचे टायपिंग
+                </div>
+                <div class="typing-input-container">
+                    <textarea 
+                        class="typing-input" 
+                        id="typingInput" 
+                        placeholder="वरील मराठी परिच्छेद येथे टाइप करण्यास सुरुवात करा. पहिल्या अक्षराने १ मिनिटाची वेळ सुरू होईल."
+                        spellcheck="false"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        dir="ltr"
+                    ></textarea>
+                </div>
+            </div>
+
+            <div class="instructions">
+                <div class="instruction-item">
+                    <i class="fas fa-info-circle" style="color: var(--primary);"></i>
+                    <span>पहिल्या कीस्ट्रोकने वेळ सुरू होते</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-language" style="color: var(--primary);"></i>
+                    <span>मराठी (देवनागरी) टायपिंग सराव</span>
+                </div>
+                <div class="instruction-item">
+                    <i class="fas fa-clock" style="color: var(--success);"></i>
+                    <span>१ मिनिटाची चाचणी</span>
+                </div>
+            </div>
+
+            <div class="start-section">
+                <button class="btn btn-primary" id="startTestBtn">
+                    <i class="fas fa-play"></i>
+                    मराठी चाचणी सुरू करा
+                </button>
+                <button class="btn btn-secondary" id="newPassageBtn">
+                    <i class="fas fa-sync-alt"></i>
+                    नवीन परिच्छेद
+                </button>
+            </div>
+
+            <div class="results-container" id="resultsContainer">
+                <div class="results-header">
+                    <h2>✨ टायपिंग चाचणी निकाल ✨</h2>
+                    <p>तुमच्या १ मिनिटाच्या मराठी टायपिंग चाचणीचे परिणाम</p>
+                </div>
+                <div class="results-grid">
+                    <div class="result-card result-wpm">
+                        <div class="result-value" id="resultWPM">0</div>
+                        <div class="result-label">शब्द प्रति मिनिट (WPM)</div>
+                    </div>
+                    <div class="result-card result-errors">
+                        <div class="result-value" id="resultErrors">0</div>
+                        <div class="result-label">एकूण चुका</div>
+                    </div>
+                    <div class="result-card result-accuracy">
+                        <div class="result-value" id="resultAccuracy">100%</div>
+                        <div class="result-label">अचूकता (Accuracy)</div>
+                    </div>
+                </div>
+                <div class="results-actions">
+                    <button class="btn btn-primary" id="tryAgainBtn">
+                        <i class="fas fa-redo"></i>
+                        पुन्हा प्रयत्न करा
+                    </button>
+                    <button class="btn btn-secondary" id="newTestBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        नवीन चाचणी
+                    </button>
+                </div>
+            </div>
+
+            <div class="language-note">
+                <i class="fas fa-info-circle"></i> सूचना: मराठी टायपिंगसाठी देवनागरी लिपी वापरली जाते. अचूकता आणि गती यावर लक्ष केंद्रित करा.
+            </div>
+
+            <div class="ad-container" id="adContainer" style="display: none;">
+                <p>📢 जाहिरात क्षेत्र</p>
+                <p style="margin-top: 8px; font-size: 12px; color: var(--text-muted);">
+                    हे क्षेत्र जाहिरातींसाठी आहे. चाचणी पूर्ण झाल्यानंतर दिसेल.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-keyboard"></i>
+                    Typing<span>Nova</span> | मराठी टायपिंग
+                </div>
+                <p style="color: var(--text-light); font-size: 14px; margin-bottom: 15px;">
+                    मराठी टायपिंग गती आणि अचूकता सुधारण्यासाठी सराव करा
+                </p>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="1min.html">English Test</a>
+                    <a href="hindi-typing.html">हिन्दी टायपिंग</a>
+                    <a href="about.html">About</a>
+                </div>
+            </div>
+            <div class="copyright">
+                © <span id="currentYear"></span> Typing Nova – सर्व हक्क राखीव | मराठी आवृत्ती
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+    <script>
+        // Marathi Typing Test Class (1 Minute)
+        class MarathiTypingTest {
+            constructor() {
+                this.passageDisplay = document.getElementById('passageDisplay');
+                this.typingInput = document.getElementById('typingInput');
+                this.timeRemaining = document.getElementById('timeRemaining');
+                this.errorCount = document.getElementById('errorCount');
+                this.startTestBtn = document.getElementById('startTestBtn');
+                this.newPassageBtn = document.getElementById('newPassageBtn');
+                this.resultsContainer = document.getElementById('resultsContainer');
+                this.resultWPM = document.getElementById('resultWPM');
+                this.resultErrors = document.getElementById('resultErrors');
+                this.resultAccuracy = document.getElementById('resultAccuracy');
+                this.tryAgainBtn = document.getElementById('tryAgainBtn');
+                this.newTestBtn = document.getElementById('newTestBtn');
+                this.adContainer = document.getElementById('adContainer');
+                
+                // Marathi Passages Database (authentic Marathi content)
+                this.marathiPassages = [
+                    "महाराष्ट्र हे पश्चिम भारतातील एक प्रमुख राज्य आहे. याची राजधानी मुंबई आहे. मराठी ही राज्याची अधिकृत भाषा आहे. छत्रपती शिवाजी महाराज यांनी मराठा साम्राज्याची स्थापना केली. मराठी साहित्य समृद्ध आहे.",
+                    
+                    "नियमित टायपिंग सरावाने तुमची गती वाढते. दररोज किमान दहा मिनिटे सराव केल्यास अचूकता सुधारते. मराठी टायपिंगसाठी देवनागरी लिपीचा वापर केला जातो. सातत्य ही यशाची गुरुकिल्ली आहे.",
+                    
+                    "तंत्रज्ञानामुळे कामाचा वेग वाढला आहे. जलद आणि अचूक टायपिंग हे यशस्वी करिअरसाठी महत्त्वाचे आहे. मराठीत टंकलेखन सराव करण्यासाठी हे प्लॅटफॉर्म उपयुक्त आहे. नियमित सराव ठेवा.",
+                    
+                    "शिक्षण ही प्रगतीची पायरी आहे. चांगले शिक्षण घेतल्यास करिअरच्या संधी वाढतात. मराठी भाषेत टायपिंग शिकून तुम्ही अधिक कार्यक्षम होऊ शकता. सरावाने परिपूर्णता येते.",
+                    
+                    "डिजिटल युगात टायपिंग हे एक आवश्यक कौशल्य बनले आहे. ऑफिसमध्ये, शिक्षणात, आणि वैयक्तिक कामासाठी टायपिंगची मदत होते. मराठी कीबोर्डवर सराव केल्यास फायदा होतो.",
+                    
+                    "संगणकाचा वापर करताना टायपिंग गती महत्त्वाची असते. अहवाल लिहिणे, ईमेल पाठवणे, आणि दस्तऐवज तयार करणे यासाठी वेगवान टायपिंग उपयोगी पडते. नियमितपणे सराव करा.",
+                    
+                    "विज्ञान आणि तंत्रज्ञानाच्या प्रगतीमुळे जग बदलले आहे. आता कोणीही कोठूनही शिकू शकतो. मराठी भाषेत टायपिंग शिकल्याने आत्मविश्वास वाढतो. अधिकाधिक सराव करत रहा.",
+                    
+                    "प्रत्येक क्षेत्रात यशस्वी होण्यासाठी संवाद कौशल्ये आवश्यक आहेत. मराठी ही आपली मातृभाषा आहे. ती अचूकपणे टाइप करणे ही एक कला आहे. सरावाने ही कला सिद्ध होते."
+                ];
+                
+                this.originalPassage = '';
+                this.passageChars = [];
+                this.currentPassageIndex = 0;
+                this.errors = 0;
+                this.startTime = null;
+                this.timerInterval = null;
+                this.totalTime = 60;
+                this.timeLeft = this.totalTime;
+                this.isRunning = false;
+                this.isCompleted = false;
+                this.totalTypedChars = 0;
+                this.errorMap = new Map();
+                
+                this.init();
+            }
+            
+            init() {
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+                this.loadRandomMarathiPassage();
+                
+                this.typingInput.addEventListener('input', this.handleTyping.bind(this));
+                this.typingInput.addEventListener('keydown', this.handleKeyDown.bind(this));
+                this.typingInput.addEventListener('paste', (e) => e.preventDefault());
+                this.typingInput.addEventListener('copy', (e) => e.preventDefault());
+                this.typingInput.addEventListener('cut', (e) => e.preventDefault());
+                
+                this.startTestBtn.addEventListener('click', () => {
+                    this.typingInput.focus();
+                    this.startTestBtn.disabled = true;
+                    this.startTestBtn.innerHTML = '<i class="fas fa-play"></i> चाचणी सुरू झाली';
+                });
+                
+                this.newPassageBtn.addEventListener('click', () => this.loadRandomMarathiPassage());
+                this.tryAgainBtn.addEventListener('click', this.resetTest.bind(this));
+                this.newTestBtn.addEventListener('click', () => {
+                    this.loadRandomMarathiPassage();
+                    this.resetTest();
+                });
+                
+                this.updatePassageDisplay();
+            }
+            
+            loadRandomMarathiPassage() {
+                const randomIndex = Math.floor(Math.random() * this.marathiPassages.length);
+                this.originalPassage = this.marathiPassages[randomIndex];
+                this.passageChars = this.originalPassage.split('');
+                
+                this.currentPassageIndex = 0;
+                this.errors = 0;
+                this.totalTypedChars = 0;
+                this.errorMap.clear();
+                
+                this.typingInput.value = '';
+                this.typingInput.disabled = false;
+                this.typingInput.classList.remove('disabled');
+                
+                this.startTestBtn.disabled = false;
+                this.startTestBtn.innerHTML = '<i class="fas fa-play"></i> मराठी चाचणी सुरू करा';
+                
+                this.resultsContainer.classList.remove('active');
+                this.adContainer.style.display = 'none';
+                
+                this.timeRemaining.textContent = '01:00';
+                this.timeRemaining.style.color = 'var(--timer-green)';
+                this.errorCount.textContent = '0';
+                
+                clearInterval(this.timerInterval);
+                this.isRunning = false;
+                this.isCompleted = false;
+                this.timeLeft = this.totalTime;
+                
+                this.updatePassageDisplay();
+                this.typingInput.focus();
+            }
+            
+            updatePassageDisplay() {
+                let displayHTML = '';
+                for (let i = 0; i < this.passageChars.length; i++) {
+                    let charClass = '';
+                    let charContent = this.passageChars[i];
+                    if (charContent === ' ') charContent = ' ';
+                    else if (charContent === '\n') charContent = '\n';
+                    
+                    if (i < this.currentPassageIndex) {
+                        charClass = this.errorMap.has(i) ? 'incorrect' : 'correct';
+                    } else if (i === this.currentPassageIndex) {
+                        charClass = 'current';
+                    }
+                    
+                    if (charContent === '\n') {
+                        displayHTML += `<br><span class="char ${charClass}"> </span>`;
+                    } else {
+                        displayHTML += `<span class="char ${charClass}">${this.escapeHtml(charContent)}</span>`;
+                    }
+                }
+                this.passageDisplay.innerHTML = displayHTML;
+                
+                const currentChar = this.passageDisplay.querySelector('.char.current');
+                if (currentChar) {
+                    currentChar.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+                }
+            }
+            
+            escapeHtml(text) {
+                const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+                return text.replace(/[&<>"']/g, m => map[m]);
+            }
+            
+            handleTyping(e) {
+                if (this.isCompleted) return;
+                const input = this.typingInput.value;
+                const inputLength = input.length;
+                
+                if (!this.isRunning && inputLength > 0) {
+                    this.startTimer();
+                }
+                
+                if (inputLength > this.currentPassageIndex + 1) {
+                    this.typingInput.value = input.substring(0, this.currentPassageIndex);
+                    return;
+                }
+                
+                if (inputLength < this.currentPassageIndex) {
+                    this.currentPassageIndex = inputLength;
+                    this.updatePassageDisplay();
+                    return;
+                }
+                
+                if (inputLength === this.currentPassageIndex + 1) {
+                    const typedChar = input[this.currentPassageIndex];
+                    const expectedChar = this.passageChars[this.currentPassageIndex];
+                    const isCorrect = typedChar === expectedChar;
+                    
+                    this.totalTypedChars++;
+                    
+                    if (isCorrect) {
+                        if (this.errorMap.has(this.currentPassageIndex)) this.errorMap.delete(this.currentPassageIndex);
+                    } else {
+                        this.errors++;
+                        this.errorMap.set(this.currentPassageIndex, { typed: typedChar, expected: expectedChar });
+                    }
+                    
+                    this.currentPassageIndex++;
+                    this.updatePassageDisplay();
+                    this.errorCount.textContent = this.errors;
+                }
+            }
+            
+            handleKeyDown(e) {
+                if (e.key === 'Tab') e.preventDefault();
+            }
+            
+            startTimer() {
+                if (this.isRunning) return;
+                this.isRunning = true;
+                this.timerInterval = setInterval(() => {
+                    this.timeLeft--;
+                    this.timeRemaining.textContent = `00:${this.timeLeft.toString().padStart(2, '0')}`;
+                    
+                    if (this.timeLeft <= 10) this.timeRemaining.style.color = 'var(--timer-red)';
+                    else if (this.timeLeft <= 30) this.timeRemaining.style.color = 'var(--warning)';
+                    
+                    if (this.timeLeft <= 0) {
+                        this.timeLeft = 0;
+                        this.timeRemaining.textContent = '00:00';
+                        this.completeTest();
+                    }
+                }, 1000);
+            }
+            
+            completeTest() {
+                clearInterval(this.timerInterval);
+                this.isRunning = false;
+                this.isCompleted = true;
+                this.typingInput.disabled = true;
+                this.typingInput.classList.add('disabled');
+                
+                const wpm = (this.totalTypedChars / 5) / 1;
+                const accuracy = this.totalTypedChars > 0 ? ((this.totalTypedChars - this.errors) / this.totalTypedChars) * 100 : 0;
+                
+                this.resultWPM.textContent = Math.round(wpm);
+                this.resultErrors.textContent = this.errors;
+                this.resultAccuracy.textContent = `${Math.min(100, Math.round(accuracy))}%`;
+                
+                this.resultsContainer.classList.add('active');
+                this.adContainer.style.display = 'block';
+                
+                setTimeout(() => {
+                    this.resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+            
+            resetTest() {
+                clearInterval(this.timerInterval);
+                this.currentPassageIndex = 0;
+                this.errors = 0;
+                this.totalTypedChars = 0;
+                this.errorMap.clear();
+                this.isRunning = false;
+                this.isCompleted = false;
+                this.timeLeft = this.totalTime;
+                
+                this.typingInput.value = '';
+                this.typingInput.disabled = false;
+                this.typingInput.classList.remove('disabled');
+                this.startTestBtn.disabled = false;
+                this.startTestBtn.innerHTML = '<i class="fas fa-play"></i> मराठी चाचणी सुरू करा';
+                this.timeRemaining.textContent = '01:00';
+                this.timeRemaining.style.color = 'var(--timer-green)';
+                this.errorCount.textContent = '0';
+                this.resultsContainer.classList.remove('active');
+                this.adContainer.style.display = 'none';
+                this.updatePassageDisplay();
+                this.typingInput.focus();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            new MarathiTypingTest();
+        });
+    </script>
+</body>
+</html>
+```
