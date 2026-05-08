@@ -1,3 +1,5 @@
+Here is an updated HTML document that adds Hindi and Marathi typing mode buttons to your existing homepage, with each button linking to its respective typing practice page.
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +24,8 @@
             --primary-dark: #554fd8;
             --secondary: #ff6b9d;
             --accent: #00d4aa;
+            --hindi-color: #f97316;
+            --marathi-color: #eab308;
             --dark-bg: #0f172a;
             --dark-surface: #1e293b;
             --dark-card: #334155;
@@ -36,6 +40,8 @@
             --bright-btn-hover: linear-gradient(135deg, #ff8fab 0%, #ff6b9d 100%);
             --bright-blue-btn: linear-gradient(135deg, #4361ee 0%, #4cc9f0 100%);
             --bright-blue-btn-hover: linear-gradient(135deg, #4cc9f0 0%, #4361ee 100%);
+            --hindi-gradient: linear-gradient(135deg, #f97316 0%, #f59e0b 100%);
+            --marathi-gradient: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
         }
 
         /* Base Styles */
@@ -125,6 +131,30 @@
             background: var(--bright-btn-hover);
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-hindi {
+            background: var(--hindi-gradient);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+        }
+
+        .btn-hindi:hover {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+        }
+
+        .btn-marathi {
+            background: var(--marathi-gradient);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(234, 179, 8, 0.3);
+        }
+
+        .btn-marathi:hover {
+            background: linear-gradient(135deg, #ca8a04 0%, #eab308 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(234, 179, 8, 0.4);
         }
 
         .btn-outline {
@@ -261,6 +291,14 @@
             justify-content: center;
             gap: 1.5rem;
             margin-top: 2rem;
+        }
+
+        .language-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .time-options {
@@ -589,7 +627,7 @@
                 padding: 60px 0;
             }
             
-            .cta-buttons, .time-options {
+            .cta-buttons, .language-buttons, .time-options {
                 flex-direction: column;
                 align-items: center;
             }
@@ -641,13 +679,13 @@
                     <li><a href="passage.html">Passage Typing</a></li>
                     <li><a href="about.html">About</a></li>
                     <li>
-    <a href="2min.html" style="text-decoration: none;">
-        <button class="btn btn-primary" id="startTypingMobileBtn" style="width: 100%; margin: 1rem 0; border: none;">
-            Start Typing
-        </button>
-    </a>
-</li>
-
+                        <a href="2min.html" style="text-decoration: none;">
+                            <button class="btn btn-primary" id="startTypingMobileBtn" style="width: 100%; margin: 1rem 0; border: none;">
+                                Start Typing
+                            </button>
+                        </a>
+                    </li>
+                </ul>
             </nav>
             
             <!-- Mobile Menu Button -->
@@ -663,14 +701,14 @@
                 <li><a href="1min.html">Speed Test</a></li>
                 <li><a href="passage.html">Passage Typing</a></li>
                 <li><a href="about.html">About</a></li>
-               <li>
-    <a href="1min.html" style="text-decoration: none;">
-        <button class="btn btn-primary" id="startTypingMobileBtn" style="width: 100%; margin: 1rem 0; border: none;">
-            Start Typing
-        </button>
-    </a>
-</li>
-
+                <li>
+                    <a href="1min.html" style="text-decoration: none;">
+                        <button class="btn btn-primary" id="startTypingMobileBtn" style="width: 100%; margin: 1rem 0; border: none;">
+                            Start Typing
+                        </button>
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
 
@@ -681,34 +719,45 @@
             <h1>Test and Improve Your Typing Speed</h1>
             <p>Practice typing with short speed tests and full passage typing to improve accuracy and consistency.</p>
             
-           <div class="cta-buttons">
-    <a href="1min.html" class="btn btn-primary btn-large" id="startTypingHeroBtn">
-        <i class="fas fa-play-circle" style="margin-right: 8px;"></i>
-        Start Typing
-    </a>
+            <div class="cta-buttons">
+                <a href="1min.html" class="btn btn-primary btn-large" id="startTypingHeroBtn">
+                    <i class="fas fa-play-circle" style="margin-right: 8px;"></i>
+                    Start Typing
+                </a>
+                <a href="passage.html" class="btn btn-secondary btn-large">
+                    <i class="fas fa-align-left" style="margin-right: 8px;"></i>
+                    Passage Typing
+                </a>
+            </div>
 
-    <a href="passage.html" class="btn btn-secondary btn-large">
-        <i class="fas fa-align-left" style="margin-right: 8px;"></i>
-        Passage Typing
-    </a>
-</div>
+            <!-- Hindi and Marathi Typing Buttons Added Here -->
+            <div class="language-buttons">
+                <a href="hindi-typing.html" class="btn btn-hindi btn-large">
+                    <i class="fas fa-language" style="margin-right: 8px;"></i>
+                    हिन्दी टाइपिंग (Hindi)
+                </a>
+                <a href="marathi-typing.html" class="btn btn-marathi btn-large">
+                    <i class="fas fa-language" style="margin-right: 8px;"></i>
+                    मराठी टायपिंग (Marathi)
+                </a>
+            </div>
 
-<div class="time-options">
-    <a href="1min.html" class="btn time-btn">
-        <i class="fas fa-clock" style="margin-right: 8px;"></i>
-        1 Minute Test
-    </a>
-
-    <a href="3min.html" class="btn time-btn">
-        <i class="fas fa-clock" style="margin-right: 8px;"></i>
-        3 Minute Test
-    </a>
-
-    <a href="5min.html" class="btn time-btn">
-        <i class="fas fa-clock" style="margin-right: 8px;"></i>
-        5 Minute Test
-    </a>
-</div>
+            <div class="time-options">
+                <a href="1min.html" class="btn time-btn">
+                    <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                    1 Minute Test
+                </a>
+                <a href="3min.html" class="btn time-btn">
+                    <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                    3 Minute Test
+                </a>
+                <a href="5min.html" class="btn time-btn">
+                    <i class="fas fa-clock" style="margin-right: 8px;"></i>
+                    5 Minute Test
+                </a>
+            </div>
+        </div>
+    </section>
 
     <!-- Features Section -->
     <section class="section features" id="speed-test">
@@ -833,9 +882,8 @@
                     <ul class="footer-links">
                         <li><a href="#">Home <i class="fas fa-chevron-right"></i></a></li>
                         <li><a href="#speed-test">Speed Test <i class="fas fa-chevron-right"></i></a></li>
-                        <li><a href="
-passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
-                        <li><a href="about.htmlabout">About <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
+                        <li><a href="about.html">About <i class="fas fa-chevron-right"></i></a></li>
                     </ul>
                 </div>
                 
@@ -868,7 +916,6 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
         // DOM Elements
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
-        const startTypingBtn = document.getElementById('startTypingBtn');
         const startTypingMobileBtn = document.getElementById('startTypingMobileBtn');
         const startTypingHeroBtn = document.getElementById('startTypingHeroBtn');
         const timeButtons = document.querySelectorAll('.time-btn');
@@ -879,7 +926,7 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
         
         // Mobile Menu Toggle - FIXED
         mobileMenuBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevent event bubbling
+            e.stopPropagation();
             mobileNav.classList.toggle('active');
             mobileMenuBtn.innerHTML = mobileNav.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
@@ -904,8 +951,6 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
         
         // Start Typing Button Handler
         function startTyping() {
-            // In a real implementation, this would redirect to the typing test page
-            // For this demo, we'll show an alert and scroll to the features section
             alert("Starting typing test... In a full implementation, this would navigate to the typing test interface.");
             window.scrollTo({
                 top: document.querySelector('.features').offsetTop - 80,
@@ -916,7 +961,6 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
         // Start Typing with specific time
         function startTimedTest(minutes) {
             alert(`Starting ${minutes} minute typing test... In a full implementation, this would start a ${minutes}-minute timed test.`);
-            // Scroll to features section
             window.scrollTo({
                 top: document.querySelector('.features').offsetTop - 80,
                 behavior: 'smooth'
@@ -924,9 +968,8 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
         }
         
         // Event Listeners
-        startTypingBtn.addEventListener('click', startTyping);
-        startTypingMobileBtn.addEventListener('click', startTyping);
-        startTypingHeroBtn.addEventListener('click', startTyping);
+        if(startTypingMobileBtn) startTypingMobileBtn.addEventListener('click', startTyping);
+        if(startTypingHeroBtn) startTypingHeroBtn.addEventListener('click', startTyping);
         
         // Time button event listeners
         timeButtons.forEach(button => {
@@ -952,7 +995,6 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
                         behavior: 'smooth'
                     });
                     
-                    // Close mobile menu if open
                     mobileNav.classList.remove('active');
                     mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
@@ -966,7 +1008,8 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
             });
             
             button.addEventListener('mouseup', () => {
-                if (button.classList.contains('btn-primary') || button.classList.contains('btn-secondary')) {
+                if (button.classList.contains('btn-primary') || button.classList.contains('btn-secondary') || 
+                    button.classList.contains('btn-hindi') || button.classList.contains('btn-marathi')) {
                     button.style.transform = 'translateY(-3px)';
                 } else {
                     button.style.transform = 'translateY(-2px)';
@@ -980,12 +1023,15 @@ passage.html">Passage Typing <i class="fas fa-chevron-right"></i></a></li>
         
         // Add keyboard icon animation
         const keyboardIcon = document.querySelector('.logo-icon');
-        setInterval(() => {
-            keyboardIcon.style.transform = 'translateY(-2px)';
-            setTimeout(() => {
-                keyboardIcon.style.transform = 'translateY(0)';
-            }, 200);
-        }, 3000);
+        if(keyboardIcon) {
+            setInterval(() => {
+                keyboardIcon.style.transform = 'translateY(-2px)';
+                setTimeout(() => {
+                    keyboardIcon.style.transform = 'translateY(0)';
+                }, 200);
+            }, 3000);
+        }
     </script>
 </body>
 </html>
+```
